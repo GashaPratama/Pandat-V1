@@ -9,7 +9,7 @@ class JenisSenjata extends Model
 {
     use HasFactory;
 
-    protected $table = 'jenis_senjata';
+    protected $table = 'jenis_senjatas';
     protected $primaryKey = 'id_jenis';
     public $timestamps = true;
 

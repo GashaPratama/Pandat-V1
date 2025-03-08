@@ -9,8 +9,8 @@ class Gudang extends Model
 {
     use HasFactory;
 
-    protected $table = 'gudang';
-    protected $primaryKey = 'id_gudang';
+    protected $table = 'gudangs'; // ✅ Sesuai dengan migration
+    protected $primaryKey = 'id_gudang'; // ✅ Sesuai dengan migration
     public $timestamps = true;
 
     protected $fillable = [
@@ -19,9 +19,9 @@ class Gudang extends Model
         'kota',
     ];
 
-    public function senjata()
-{
-    return $this->hasMany(Senjata::class, 'id_gudang');
-}
-
+    // ✅ Pastikan relasi benar
+    public function senjatas() // Ubah nama relasi agar lebih jelas
+    {
+        return $this->hasMany(Senjata::class, 'id_gudang', 'id_gudang'); // Pastikan foreign key sesuai
+    }
 }

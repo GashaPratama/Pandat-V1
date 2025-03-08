@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gudang;
+use App\Http\Controllers\Controller;
 
 class GudangController extends Controller
 {
@@ -12,11 +13,11 @@ class GudangController extends Controller
      */
     public function index()
     {
-        $gudang = Gudang::all();
+        $gudangs = Gudang::all();
         return response()->json([
             'status' => 200,
-            'message' => "Gudang ditemukan",
-            'data' => $gudang
+            'message' => "Data gudang ditemukan",
+            'data' => $gudangs
         ]);
     }
 
@@ -26,7 +27,7 @@ class GudangController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "nama" => "required|unique:gudangs", // Pastikan nama tabel benar
+            "nama_gudang" => "required|unique:gudangs", 
             "alamat" => "required|string",
             "kota" => "required|string",
         ]);
@@ -62,7 +63,7 @@ class GudangController extends Controller
         $gudang = Gudang::findOrFail($id);
 
         $validatedData = $request->validate([
-            "nama" => "required|string",
+            "nama_gudang" => "required|string", 
             "alamat" => "required|string",
             "kota" => "required|string",
         ]);

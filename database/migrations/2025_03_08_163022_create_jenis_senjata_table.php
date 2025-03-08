@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gudangs', function (Blueprint $table) {
-            $table->id('id_gudang');
-            $table->string('nama_gudang', 100);
-            $table->string('alamat', 255);
-            $table->string('kota', 100);
+        Schema::create('jenis_senjata', function (Blueprint $table) { // Konsisten, tidak pakai "s" di akhir
+            $table->id('id_jenis');
+            $table->string('nama_jenis', 100);
+            $table->string('deskripsi', 255);
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('gudangs');
+        Schema::dropIfExists('jenis_senjata');
     }
 };
