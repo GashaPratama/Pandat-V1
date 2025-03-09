@@ -9,18 +9,20 @@ class JenisSenjata extends Model
 {
     use HasFactory;
 
-    protected $table = 'jenis_senjatas';
+    protected $table = 'jenis_senjata'; // Pastikan nama tabel sesuai dengan database
     protected $primaryKey = 'id_jenis';
     public $timestamps = true;
+    public $incrementing = true; // Jika ID adalah auto-increment
+    protected $keyType = 'int'; // Jika ID adalah integer
 
     protected $fillable = [
         'nama_jenis',
         'deskripsi',
     ];
 
-
-    public function senjata()
-{
-    return $this->hasMany(Senjata::class, 'id_jenis');
-}
+    // Relasi dengan Senjata
+    public function senjatas()
+    {
+        return $this->hasMany(Senjata::class, 'id_jenis', 'id_jenis'); // Pastikan foreign key benar
+    }
 }

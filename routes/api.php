@@ -3,10 +3,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GudangController;
+use App\Http\Controllers\JenisSenjataController;
 
 
-Route::get('/gudang', [GudangController::class, 'index']);
-Route::post('/gudang', [GudangController::class, 'store']);
-Route::get('/gudang/{id}', [GudangController::class, 'show']);
-Route::put('/gudang/{id}', [GudangController::class, 'update']);
-Route::delete('/gudang/{id}', [GudangController::class, 'destroy']);
+
+Route::apiResource('gudang', GudangController::class);
+Route::apiResource('jenissenjata', JenisSenjataController::class);

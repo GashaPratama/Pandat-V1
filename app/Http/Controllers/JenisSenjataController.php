@@ -3,62 +3,116 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JenisSenjata;
+use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule; // Tambahkan Rule untuk validasi lebih aman
 
 class JenisSenjataController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan semua jenis senjata.
      */
     public function index()
     {
-        //
+        $jenisSenjata = JenisSenjata::all();
+        return response()->json([
+            'status' => 200,
+            'message' => "Data jenis senjata ditemukan",
+            'data' => $jenisSenjata
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Menyimpan jenis senjata baru.
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "nama_jenis" => "required|unique:jenis_senjata|max:100", // Pastikan tabel sesuai
+            "deskripsi" => "nullable|string|max:255",
+        ]);
+
+        $jenisSenjata = JenisSenjata::create($validatedData);
+
+        return response()->json([
+            'status' => 201,
+            "message" => "Jenis senjata berhasil dibuat",
+            "data" => $jenisSenjata
+        ], 201);
     }
 
     /**
-     * Display the specified resource.
+     * Menampilkan jenis senjata berdasarkan ID.
      */
     public function show(string $id)
     {
-        //
+        $jenisSenjata = JenisSenjata::find($id);
+
+        if (!$jenisSenjata) {
+            return response()->json([
+                'status' => 404,
+                "message" => "Jenis senjata tidak ditemukan"
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 200,
+            "message" => "Jenis senjata berhasil ditemukan",
+            "data" => $jenisSenjata
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Mengupdate jenis senjata berdasarkan ID.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $jenisSenjata = JenisSenjata::find($id);
+
+        if (!$jenisSenjata) {
+            return response()->json([
+                'status' => 404,
+                "message" => "Jenis senjata tidak ditemukan"
+            ], 404);
+        }
+
+        $validatedData = $request->validate([
+            "nama_jenis" => [
+                "required",
+                "max:100",
+                Rule::unique('jenis_senjata', 'nama_jenis')->ignore($id, 'id_jenis')
+            ],
+            "deskripsi" => "nullable|string|max:255",
+        ]);
+
+        $jenisSenjata->update($validatedData);
+
+        return response()->json([
+            'status' => 200,
+            "message" => "Jenis senjata berhasil diupdate",
+            "data" => $jenisSenjata
+        ]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus jenis senjata berdasarkan ID.
      */
     public function destroy(string $id)
     {
-        //
+        $jenisSenjata = JenisSenjata::find($id);
+
+        if (!$jenisSenjata) {
+            return response()->json([
+                'status' => 404,
+                "message" => "Jenis senjata tidak ditemukan"
+            ], 404);
+        }
+
+        $jenisSenjata->delete();
+
+        return response()->json([
+            'status' => 200,
+            "message" => "Jenis senjata berhasil dihapus"
+        ]);
     }
 }
