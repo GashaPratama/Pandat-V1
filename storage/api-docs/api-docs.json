@@ -155,13 +155,151 @@
         "/api/jenissenjata": {
             "get": {
                 "tags": [
-                    "JeisSenjata"
+                    "JenisSenjata"
                 ],
-                "summary": "Tampilkan semua Jenis Senjata",
+                "summary": "Menampilkan seluruh data jenis senjata",
                 "operationId": "dd0c96293daad8fcbfd69c79326dd3fd",
                 "responses": {
                     "200": {
-                        "description": "Data Jenis ditemukan"
+                        "description": "Berhasil menampilkan semua jenis senjata"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "JenisSenjata"
+                ],
+                "summary": "Membuat jenis senjata baru",
+                "operationId": "728814bd5da6d8379a84055c85c9d78a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_jenis"
+                                ],
+                                "properties": {
+                                    "nama_jenis": {
+                                        "type": "string",
+                                        "maxLength": 100
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Jenis senjata berhasil dibuat"
+                    },
+                    "422": {
+                        "description": "Validasi gagal"
+                    }
+                }
+            }
+        },
+        "/api/jenissenjata/{id}": {
+            "get": {
+                "tags": [
+                    "JenisSenjata"
+                ],
+                "summary": "Menampilkan detail jenis senjata berdasarkan ID",
+                "operationId": "bb01b1cb62b15da6f44db0d167996cc0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data jenis senjata ditemukan"
+                    },
+                    "404": {
+                        "description": "Jenis senjata tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "JenisSenjata"
+                ],
+                "summary": "Mengubah data jenis senjata berdasarkan ID",
+                "operationId": "39b939327b558be657ff44e56109b1d4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_jenis"
+                                ],
+                                "properties": {
+                                    "nama_jenis": {
+                                        "type": "string",
+                                        "maxLength": 100
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Jenis senjata berhasil diperbarui"
+                    },
+                    "404": {
+                        "description": "Jenis senjata tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "JenisSenjata"
+                ],
+                "summary": "Menghapus jenis senjata berdasarkan ID",
+                "operationId": "8679ff1bc3a8b87f0d5d9ab63c52c6d1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jenis senjata berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Jenis senjata tidak ditemukan"
                     }
                 }
             }
@@ -351,12 +489,12 @@
     },
     "tags": [
         {
-            "name": "Gudang",
-            "description": "Gudang"
+            "name": "JenisSenjata",
+            "description": "Endpoint untuk mengelola data jenis senjata"
         },
         {
-            "name": "JeisSenjata",
-            "description": "JeisSenjata"
+            "name": "Gudang",
+            "description": "Gudang"
         },
         {
             "name": "Senjata",

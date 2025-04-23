@@ -5,53 +5,98 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JenisSenjata;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule; // Tambahkan Rule untuk validasi lebih aman
+use Illuminate\Validation\Rule;
 use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Tag(
+ *     name="JenisSenjata",
+ *     description="Endpoint untuk mengelola data jenis senjata"
+ * )
+ */
 class JenisSenjataController extends Controller
 {
-   /**
+    /**
      * @OA\Get(
      *     path="/api/jenissenjata",
-     *     summary="Tampilkan semua Jenis Senjata",
-     *     tags={"JeisSenjata"},
+     *     summary="Menampilkan seluruh data jenis senjata",
+     *     tags={"JenisSenjata"},
      *     @OA\Response(
      *         response=200,
-     *         description="Data Jenis ditemukan"
+     *         description="Berhasil menampilkan semua jenis senjata"
      *     )
      * )
      */
     public function index()
     {
         $jenisSenjata = JenisSenjata::all();
+
         return response()->json([
             'status' => 200,
-            'message' => "Data jenis senjata ditemukan",
+            'message' => 'Data jenis senjata ditemukan',
             'data' => $jenisSenjata
         ]);
     }
 
     /**
-     * Menyimpan jenis senjata baru.
+     * @OA\Post(
+     *     path="/api/jenissenjata",
+     *     summary="Membuat jenis senjata baru",
+     *     tags={"JenisSenjata"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nama_jenis"},
+     *             @OA\Property(property="nama_jenis", type="string", maxLength=100),
+     *             @OA\Property(property="deskripsi", type="string", maxLength=255)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Jenis senjata berhasil dibuat"
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validasi gagal"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "nama_jenis" => "required|unique:jenis_senjata|max:100", // Pastikan tabel sesuai
-            "deskripsi" => "nullable|string|max:255",
+            'nama_jenis' => 'required|unique:jenis_senjata|max:100',
+            'deskripsi' => 'nullable|string|max:255',
         ]);
 
         $jenisSenjata = JenisSenjata::create($validatedData);
 
         return response()->json([
             'status' => 201,
-            "message" => "Jenis senjata berhasil dibuat",
-            "data" => $jenisSenjata
+            'message' => 'Jenis senjata berhasil dibuat',
+            'data' => $jenisSenjata
         ], 201);
     }
 
     /**
-     * Menampilkan jenis senjata berdasarkan ID.
+     * @OA\Get(
+     *     path="/api/jenissenjata/{id}",
+     *     summary="Menampilkan detail jenis senjata berdasarkan ID",
+     *     tags={"JenisSenjata"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data jenis senjata ditemukan"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Jenis senjata tidak ditemukan"
+     *     )
+     * )
      */
     public function show(string $id)
     {
@@ -60,19 +105,45 @@ class JenisSenjataController extends Controller
         if (!$jenisSenjata) {
             return response()->json([
                 'status' => 404,
-                "message" => "Jenis senjata tidak ditemukan"
+                'message' => 'Jenis senjata tidak ditemukan'
             ], 404);
         }
 
         return response()->json([
             'status' => 200,
-            "message" => "Jenis senjata berhasil ditemukan",
-            "data" => $jenisSenjata
+            'message' => 'Jenis senjata berhasil ditemukan',
+            'data' => $jenisSenjata
         ]);
     }
 
     /**
-     * Mengupdate jenis senjata berdasarkan ID.
+     * @OA\Put(
+     *     path="/api/jenissenjata/{id}",
+     *     summary="Mengubah data jenis senjata berdasarkan ID",
+     *     tags={"JenisSenjata"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nama_jenis"},
+     *             @OA\Property(property="nama_jenis", type="string", maxLength=100),
+     *             @OA\Property(property="deskripsi", type="string", maxLength=255)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Jenis senjata berhasil diperbarui"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Jenis senjata tidak ditemukan"
+     *     )
+     * )
      */
     public function update(Request $request, string $id)
     {
@@ -81,30 +152,48 @@ class JenisSenjataController extends Controller
         if (!$jenisSenjata) {
             return response()->json([
                 'status' => 404,
-                "message" => "Jenis senjata tidak ditemukan"
+                'message' => 'Jenis senjata tidak ditemukan'
             ], 404);
         }
 
         $validatedData = $request->validate([
-            "nama_jenis" => [
-                "required",
-                "max:100",
+            'nama_jenis' => [
+                'required',
+                'max:100',
                 Rule::unique('jenis_senjata', 'nama_jenis')->ignore($id, 'id_jenis')
             ],
-            "deskripsi" => "nullable|string|max:255",
+            'deskripsi' => 'nullable|string|max:255',
         ]);
 
         $jenisSenjata->update($validatedData);
 
         return response()->json([
             'status' => 200,
-            "message" => "Jenis senjata berhasil diupdate",
-            "data" => $jenisSenjata
+            'message' => 'Jenis senjata berhasil diperbarui',
+            'data' => $jenisSenjata
         ]);
     }
 
     /**
-     * Menghapus jenis senjata berdasarkan ID.
+     * @OA\Delete(
+     *     path="/api/jenissenjata/{id}",
+     *     summary="Menghapus jenis senjata berdasarkan ID",
+     *     tags={"JenisSenjata"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Jenis senjata berhasil dihapus"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Jenis senjata tidak ditemukan"
+     *     )
+     * )
      */
     public function destroy(string $id)
     {
@@ -113,7 +202,7 @@ class JenisSenjataController extends Controller
         if (!$jenisSenjata) {
             return response()->json([
                 'status' => 404,
-                "message" => "Jenis senjata tidak ditemukan"
+                'message' => 'Jenis senjata tidak ditemukan'
             ], 404);
         }
 
@@ -121,7 +210,7 @@ class JenisSenjataController extends Controller
 
         return response()->json([
             'status' => 200,
-            "message" => "Jenis senjata berhasil dihapus"
+            'message' => 'Jenis senjata berhasil dihapus'
         ]);
     }
 }
