@@ -6,11 +6,28 @@ use Illuminate\Http\Request;
 use App\Models\JenisSenjata;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule; // Tambahkan Rule untuk validasi lebih aman
+use OpenApi\Annotations as OA;
 
+
+/**
+ * @OA\Info(
+ *     title="Jenis Senjata API",
+ *     version="1.0.0",
+ *     description="Dokumentasi API untuk manajemen jenis senjata"
+ * )
+ */
 class JenisSenjataController extends Controller
 {
-    /**
-     * Menampilkan semua jenis senjata.
+   /**
+     * @OA\Get(
+     *     path="/api/jenissenjata",
+     *     summary="Tampilkan semua Jenis Senjata",
+     *     tags={"JeisSenjata"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data Jenis ditemukan"
+     *     )
+     * )
      */
     public function index()
     {
