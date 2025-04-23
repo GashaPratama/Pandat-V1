@@ -1,0 +1,162 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Gudang API",
+        "description": "Dokumentasi API untuk manajemen gudang",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/gudang": {
+            "get": {
+                "tags": [
+                    "Gudang"
+                ],
+                "summary": "Tampilkan semua gudang",
+                "operationId": "44acc8f40145a4a1ed82bf24e96a57fe",
+                "responses": {
+                    "200": {
+                        "description": "Data gudang ditemukan"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Gudang"
+                ],
+                "summary": "Tambah gudang baru",
+                "operationId": "f4ae50868450e589096c22375452e06d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_gudang",
+                                    "alamat",
+                                    "kota"
+                                ],
+                                "properties": {
+                                    "nama_gudang": {
+                                        "type": "string"
+                                    },
+                                    "alamat": {
+                                        "type": "string"
+                                    },
+                                    "kota": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Gudang berhasil dibuat"
+                    }
+                }
+            }
+        },
+        "/api/gudang/{id}": {
+            "get": {
+                "tags": [
+                    "Gudang"
+                ],
+                "summary": "Tampilkan gudang berdasarkan ID",
+                "operationId": "640c4fc437ff2682a58a90cfca053b2a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gudang berhasil ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Gudang"
+                ],
+                "summary": "Update gudang berdasarkan ID",
+                "operationId": "21ef9789870ad305f96316f3f1fd5df9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_gudang",
+                                    "alamat",
+                                    "kota"
+                                ],
+                                "properties": {
+                                    "nama_gudang": {
+                                        "type": "string"
+                                    },
+                                    "alamat": {
+                                        "type": "string"
+                                    },
+                                    "kota": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Gudang berhasil diupdate"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Gudang"
+                ],
+                "summary": "Hapus gudang berdasarkan ID",
+                "operationId": "376de0d206ffda0576bf3e502a8bd737",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gudang berhasil dihapus"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Gudang",
+            "description": "Gudang"
+        }
+    ]
+}

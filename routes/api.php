@@ -8,6 +8,10 @@ use App\Http\Controllers\SenjataController;
 
 
 
-Route::apiResource('gudang', GudangController::class);
+// Route::apiResource('gudang', GudangController::class);
 Route::apiResource('jenissenjata', JenisSenjataController::class);
 Route::apiResource('senjata', SenjataController::class);
+
+Route::group([], function () {
+    Route::get('gudang', [GudangController::class, 'listCategory']);
+});

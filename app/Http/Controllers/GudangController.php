@@ -5,11 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Gudang;
 use App\Http\Controllers\Controller;
+use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Info(
+ *     title="Gudang API",
+ *     version="1.0.0",
+ *     description="Dokumentasi API untuk manajemen gudang"
+ * )
+ */
 class GudangController extends Controller
 {
     /**
-     * Menampilkan semua gudang.
+     * @OA\Get(
+     *     path="/api/gudang",
+     *     summary="Tampilkan semua gudang",
+     *     tags={"Gudang"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data gudang ditemukan"
+     *     )
+     * )
      */
     public function index()
     {
@@ -22,12 +38,29 @@ class GudangController extends Controller
     }
 
     /**
-     * Menyimpan gudang baru.
+     * @OA\Post(
+     *     path="/api/gudang",
+     *     summary="Tambah gudang baru",
+     *     tags={"Gudang"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nama_gudang", "alamat", "kota"},
+     *             @OA\Property(property="nama_gudang", type="string"),
+     *             @OA\Property(property="alamat", type="string"),
+     *             @OA\Property(property="kota", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Gudang berhasil dibuat"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "nama_gudang" => "required|unique:gudangs", 
+            "nama_gudang" => "required|unique:gudangs",
             "alamat" => "required|string",
             "kota" => "required|string",
         ]);
@@ -42,7 +75,21 @@ class GudangController extends Controller
     }
 
     /**
-     * Menampilkan gudang berdasarkan ID.
+     * @OA\Get(
+     *     path="/api/gudang/{id}",
+     *     summary="Tampilkan gudang berdasarkan ID",
+     *     tags={"Gudang"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Gudang berhasil ditemukan"
+     *     )
+     * )
      */
     public function show(string $id)
     {
@@ -56,14 +103,37 @@ class GudangController extends Controller
     }
 
     /**
-     * Mengupdate gudang berdasarkan ID.
+     * @OA\Put(
+     *     path="/api/gudang/{id}",
+     *     summary="Update gudang berdasarkan ID",
+     *     tags={"Gudang"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nama_gudang", "alamat", "kota"},
+     *             @OA\Property(property="nama_gudang", type="string"),
+     *             @OA\Property(property="alamat", type="string"),
+     *             @OA\Property(property="kota", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Gudang berhasil diupdate"
+     *     )
+     * )
      */
     public function update(Request $request, string $id)
     {
         $gudang = Gudang::findOrFail($id);
 
         $validatedData = $request->validate([
-            "nama_gudang" => "required|string", 
+            "nama_gudang" => "required|string",
             "alamat" => "required|string",
             "kota" => "required|string",
         ]);
@@ -78,7 +148,21 @@ class GudangController extends Controller
     }
 
     /**
-     * Menghapus gudang berdasarkan ID.
+     * @OA\Delete(
+     *     path="/api/gudang/{id}",
+     *     summary="Hapus gudang berdasarkan ID",
+     *     tags={"Gudang"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Gudang berhasil dihapus"
+     *     )
+     * )
      */
     public function destroy(string $id)
     {
