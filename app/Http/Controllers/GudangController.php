@@ -9,9 +9,9 @@ use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(
- *     title="Gudang API",
+ *     title="Pandat V1 API",
  *     version="1.0.0",
- *     description="Dokumentasi API untuk manajemen gudang"
+ *     description="Dokumentasi API untuk endpoint Warehouse Mannagement System Pandat"
  * )
  */
 class GudangController extends Controller
