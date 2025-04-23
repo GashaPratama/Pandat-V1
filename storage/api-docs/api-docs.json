@@ -151,12 +151,216 @@
                     }
                 }
             }
+        },
+        "/api/jenissenjata": {
+            "get": {
+                "tags": [
+                    "JeisSenjata"
+                ],
+                "summary": "Tampilkan semua Jenis Senjata",
+                "operationId": "dd0c96293daad8fcbfd69c79326dd3fd",
+                "responses": {
+                    "200": {
+                        "description": "Data Jenis ditemukan"
+                    }
+                }
+            }
+        },
+        "/api/senjata": {
+            "get": {
+                "tags": [
+                    "Senjata"
+                ],
+                "summary": "Menampilkan semua senjata",
+                "operationId": "7074d3ce9a6bf6491686f1f6a4295098",
+                "responses": {
+                    "200": {
+                        "description": "Data senjata ditemukan"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Senjata"
+                ],
+                "summary": "Menyimpan senjata baru",
+                "operationId": "3fcb2b99f650b978162a04bbe1ca2f1e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_senjata",
+                                    "id_jenis",
+                                    "id_gudang",
+                                    "stok",
+                                    "kaliber",
+                                    "nomor_seri"
+                                ],
+                                "properties": {
+                                    "nama_senjata": {
+                                        "type": "string"
+                                    },
+                                    "id_jenis": {
+                                        "type": "integer"
+                                    },
+                                    "id_gudang": {
+                                        "type": "integer"
+                                    },
+                                    "stok": {
+                                        "type": "integer"
+                                    },
+                                    "kaliber": {
+                                        "type": "string"
+                                    },
+                                    "nomor_seri": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Senjata berhasil dibuat"
+                    },
+                    "500": {
+                        "description": "Terjadi kesalahan saat menyimpan data"
+                    }
+                }
+            }
+        },
+        "/api/senjata/{id}": {
+            "get": {
+                "tags": [
+                    "Senjata"
+                ],
+                "summary": "Menampilkan senjata berdasarkan ID",
+                "operationId": "3c71e98de066fb9661f7bc68cd057f64",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Senjata berhasil ditemukan"
+                    },
+                    "404": {
+                        "description": "Senjata tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Senjata"
+                ],
+                "summary": "Mengupdate senjata berdasarkan ID",
+                "operationId": "875fad4eb2d29fe89c3dc1362af3d2b8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_senjata",
+                                    "id_jenis",
+                                    "id_gudang",
+                                    "stok",
+                                    "kaliber",
+                                    "nomor_seri"
+                                ],
+                                "properties": {
+                                    "nama_senjata": {
+                                        "type": "string"
+                                    },
+                                    "id_jenis": {
+                                        "type": "integer"
+                                    },
+                                    "id_gudang": {
+                                        "type": "integer"
+                                    },
+                                    "stok": {
+                                        "type": "integer"
+                                    },
+                                    "kaliber": {
+                                        "type": "string"
+                                    },
+                                    "nomor_seri": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Senjata berhasil diupdate"
+                    },
+                    "404": {
+                        "description": "Senjata tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Senjata"
+                ],
+                "summary": "Menghapus senjata berdasarkan ID",
+                "operationId": "220509eb425c06c9401dc50d37ce0e86",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Senjata berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Senjata tidak ditemukan"
+                    }
+                }
+            }
         }
     },
     "tags": [
         {
             "name": "Gudang",
             "description": "Gudang"
+        },
+        {
+            "name": "JeisSenjata",
+            "description": "JeisSenjata"
+        },
+        {
+            "name": "Senjata",
+            "description": "Senjata"
         }
     ]
 }

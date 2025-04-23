@@ -8,15 +8,24 @@ use App\Models\JenisSenjata;
 use App\Models\Gudang;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+use OpenApi\Annotations as OA;
 
 class SenjataController extends Controller
 {
     /**
-     * Menampilkan semua senjata.
+     * @OA\Get(
+     *     path="/api/senjata",
+     *     summary="Menampilkan semua senjata",
+     *     tags={"Senjata"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data senjata ditemukan"
+     *     )
+     * )
      */
     public function index()
     {
-        $senjatas = Senjata::with(['jenis', 'gudang'])->get(); // Mengambil data dengan relasi
+        $senjatas = Senjata::with(['jenis', 'gudang'])->get();
         return response()->json([
             'status' => 200,
             'message' => "Data senjata ditemukan",
@@ -25,7 +34,31 @@ class SenjataController extends Controller
     }
 
     /**
-     * Menyimpan senjata baru.
+     * @OA\Post(
+     *     path="/api/senjata",
+     *     summary="Menyimpan senjata baru",
+     *     tags={"Senjata"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nama_senjata", "id_jenis", "id_gudang", "stok", "kaliber", "nomor_seri"},
+     *             @OA\Property(property="nama_senjata", type="string"),
+     *             @OA\Property(property="id_jenis", type="integer"),
+     *             @OA\Property(property="id_gudang", type="integer"),
+     *             @OA\Property(property="stok", type="integer"),
+     *             @OA\Property(property="kaliber", type="string"),
+     *             @OA\Property(property="nomor_seri", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Senjata berhasil dibuat"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Terjadi kesalahan saat menyimpan data"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -38,26 +71,43 @@ class SenjataController extends Controller
                 "kaliber" => "required|string|max:50",
                 "nomor_seri" => "required|string|max:100|unique:senjatas,nomor_seri",
             ]);
-    
+
             $senjata = Senjata::create($validatedData);
-    
+
             return response()->json([
                 'status' => 201,
                 "message" => "Senjata berhasil dibuat",
                 "data" => $senjata
             ], 201);
-    
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 500,
                 "message" => "Terjadi kesalahan saat menyimpan data",
-                "error" => $e->getMessage() // Menampilkan pesan error
+                "error" => $e->getMessage()
             ], 500);
         }
     }
 
     /**
-     * Menampilkan senjata berdasarkan ID.
+     * @OA\Get(
+     *     path="/api/senjata/{id}",
+     *     summary="Menampilkan senjata berdasarkan ID",
+     *     tags={"Senjata"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Senjata berhasil ditemukan"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Senjata tidak ditemukan"
+     *     )
+     * )
      */
     public function show(string $id)
     {
@@ -78,7 +128,37 @@ class SenjataController extends Controller
     }
 
     /**
-     * Mengupdate senjata berdasarkan ID.
+     * @OA\Put(
+     *     path="/api/senjata/{id}",
+     *     summary="Mengupdate senjata berdasarkan ID",
+     *     tags={"Senjata"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nama_senjata", "id_jenis", "id_gudang", "stok", "kaliber", "nomor_seri"},
+     *             @OA\Property(property="nama_senjata", type="string"),
+     *             @OA\Property(property="id_jenis", type="integer"),
+     *             @OA\Property(property="id_gudang", type="integer"),
+     *             @OA\Property(property="stok", type="integer"),
+     *             @OA\Property(property="kaliber", type="string"),
+     *             @OA\Property(property="nomor_seri", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Senjata berhasil diupdate"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Senjata tidak ditemukan"
+     *     )
+     * )
      */
     public function update(Request $request, string $id)
     {
@@ -115,7 +195,25 @@ class SenjataController extends Controller
     }
 
     /**
-     * Menghapus senjata berdasarkan ID.
+     * @OA\Delete(
+     *     path="/api/senjata/{id}",
+     *     summary="Menghapus senjata berdasarkan ID",
+     *     tags={"Senjata"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Senjata berhasil dihapus"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Senjata tidak ditemukan"
+     *     )
+     * )
      */
     public function destroy(string $id)
     {

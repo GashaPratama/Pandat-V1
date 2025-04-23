@@ -8,14 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule; // Tambahkan Rule untuk validasi lebih aman
 use OpenApi\Annotations as OA;
 
-
-/**
- * @OA\Info(
- *     title="Jenis Senjata API",
- *     version="1.0.0",
- *     description="Dokumentasi API untuk manajemen jenis senjata"
- * )
- */
 class JenisSenjataController extends Controller
 {
    /**
