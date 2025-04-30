@@ -2,9 +2,9 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GudangController;
-use App\Http\Controllers\JenisSenjataController;
-use App\Http\Controllers\SenjataController;
+use App\Http\Controllers\API\GudangController;
+use App\Http\Controllers\API\JenisSenjataController;
+use App\Http\Controllers\API\SenjataController;
 
 
 
