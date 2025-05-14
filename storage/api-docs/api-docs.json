@@ -801,6 +801,328 @@
                 }
             }
         },
+        "/api/pengiriman": {
+            "get": {
+                "tags": [
+                    "PengirimanSenjata"
+                ],
+                "summary": "Ambil semua pengiriman senjata",
+                "operationId": "67c706f9cbc358de70e597275fda7c3b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PengirimanSenjata"
+                ],
+                "summary": "Tambah pengiriman baru",
+                "operationId": "943c3fb37f7dda6cf8c9b4af0b6d04a3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_institusi",
+                                    "tanggal_pengiriman",
+                                    "tujuan",
+                                    "status_pengiriman"
+                                ],
+                                "properties": {
+                                    "id_institusi": {
+                                        "type": "integer"
+                                    },
+                                    "tanggal_pengiriman": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "tujuan": {
+                                        "type": "string"
+                                    },
+                                    "status_pengiriman": {
+                                        "type": "string",
+                                        "enum": [
+                                            "diproses",
+                                            "dikirim",
+                                            "selesai"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/pengiriman/{id}": {
+            "get": {
+                "tags": [
+                    "PengirimanSenjata"
+                ],
+                "summary": "Ambil detail pengiriman",
+                "operationId": "60d504ca127dda4f623f7fcb9180170c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PengirimanSenjata"
+                ],
+                "summary": "Perbarui pengiriman",
+                "operationId": "53d5120f8deec825fcea3885f7f95bba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_institusi": {
+                                        "type": "integer"
+                                    },
+                                    "tanggal_pengiriman": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "tujuan": {
+                                        "type": "string"
+                                    },
+                                    "status_pengiriman": {
+                                        "type": "string",
+                                        "enum": [
+                                            "diproses",
+                                            "dikirim",
+                                            "selesai"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PengirimanSenjata"
+                ],
+                "summary": "Hapus pengiriman",
+                "operationId": "1fb9ae7f06daeb8bb0054982e268badc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }
+                }
+            }
+        },
+        "/api/perawatan": {
+            "get": {
+                "tags": [
+                    "PerawatanSenjata"
+                ],
+                "summary": "Ambil semua data perawatan senjata",
+                "operationId": "4ea5e9307c296f20abd9622b82d2f8cc",
+                "responses": {
+                    "200": {
+                        "description": "Sukses mengambil data"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PerawatanSenjata"
+                ],
+                "summary": "Tambah data perawatan senjata",
+                "operationId": "4b4c654534635cb8fea1441a9c78ea06",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_senjata",
+                                    "tanggal_perawatan",
+                                    "jenis_perawatan",
+                                    "teknisi"
+                                ],
+                                "properties": {
+                                    "id_senjata": {
+                                        "type": "integer"
+                                    },
+                                    "tanggal_perawatan": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "jenis_perawatan": {
+                                        "type": "string"
+                                    },
+                                    "teknisi": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil ditambahkan"
+                    }
+                }
+            }
+        },
+        "/api/perawatan/{id}": {
+            "get": {
+                "tags": [
+                    "PerawatanSenjata"
+                ],
+                "summary": "Ambil detail perawatan berdasarkan ID",
+                "operationId": "0392fe8d5ae61edc9b013f5abd366b68",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan"
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PerawatanSenjata"
+                ],
+                "summary": "Perbarui data perawatan senjata",
+                "operationId": "31048af11df2e55db65fd4b25ace98ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_senjata": {
+                                        "type": "integer"
+                                    },
+                                    "tanggal_perawatan": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "jenis_perawatan": {
+                                        "type": "string"
+                                    },
+                                    "teknisi": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data diperbarui"
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PerawatanSenjata"
+                ],
+                "summary": "Hapus data perawatan senjata",
+                "operationId": "50a9db4e238d75c4940fc2925282bcaf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Tidak ditemukan"
+                    }
+                }
+            }
+        },
         "/api/senjata": {
             "get": {
                 "tags": [
@@ -1004,6 +1326,14 @@
         {
             "name": "LisensiSenjata",
             "description": "LisensiSenjata"
+        },
+        {
+            "name": "PengirimanSenjata",
+            "description": "PengirimanSenjata"
+        },
+        {
+            "name": "PerawatanSenjata",
+            "description": "PerawatanSenjata"
         },
         {
             "name": "Senjata",
