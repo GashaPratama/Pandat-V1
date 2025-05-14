@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\Gudang;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use OpenApi\Annotations as OA;
 
-/**
- * @OA\Info(
- *     title="Pandat V1 API",
- *     version="1.0.0",
- *     description="Dokumentasi API untuk endpoint Warehouse Mannagement System Pandat"
- * )
- */
+
+
 class GudangController extends Controller
 {
     /**

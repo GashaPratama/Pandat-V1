@@ -1,10 +1,23 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Pandat V1 API",
-        "description": "Dokumentasi API untuk endpoint Warehouse Mannagement System Pandat",
+        "title": "API Documentation",
+        "description": "Documentation for the Bookstore API",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
         "version": "1.0.0"
     },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "API Server"
+        }
+    ],
     "paths": {
         "/api/gudang": {
             "get": {
@@ -12,7 +25,7 @@
                     "Gudang"
                 ],
                 "summary": "Tampilkan semua gudang",
-                "operationId": "44acc8f40145a4a1ed82bf24e96a57fe",
+                "operationId": "8efe7ecdab967baeaede583c79470389",
                 "responses": {
                     "200": {
                         "description": "Data gudang ditemukan"
@@ -24,7 +37,7 @@
                     "Gudang"
                 ],
                 "summary": "Tambah gudang baru",
-                "operationId": "f4ae50868450e589096c22375452e06d",
+                "operationId": "9a0b8a375dcecc98dddc9c33216e51a5",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -64,7 +77,7 @@
                     "Gudang"
                 ],
                 "summary": "Tampilkan gudang berdasarkan ID",
-                "operationId": "640c4fc437ff2682a58a90cfca053b2a",
+                "operationId": "4ebade4469b8d5cbdacdd596299ed180",
                 "parameters": [
                     {
                         "name": "id",
@@ -86,7 +99,7 @@
                     "Gudang"
                 ],
                 "summary": "Update gudang berdasarkan ID",
-                "operationId": "21ef9789870ad305f96316f3f1fd5df9",
+                "operationId": "f23c411e7e8e036745451e60c9f2518c",
                 "parameters": [
                     {
                         "name": "id",
@@ -134,7 +147,7 @@
                     "Gudang"
                 ],
                 "summary": "Hapus gudang berdasarkan ID",
-                "operationId": "376de0d206ffda0576bf3e502a8bd737",
+                "operationId": "a2a4511dc94b253c9ca15a86fd67f5f1",
                 "parameters": [
                     {
                         "name": "id",
@@ -158,7 +171,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Menampilkan seluruh data jenis senjata",
-                "operationId": "dd0c96293daad8fcbfd69c79326dd3fd",
+                "operationId": "17818a1d16e6f179b50f275bace3779f",
                 "responses": {
                     "200": {
                         "description": "Berhasil menampilkan semua jenis senjata"
@@ -170,7 +183,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Membuat jenis senjata baru",
-                "operationId": "728814bd5da6d8379a84055c85c9d78a",
+                "operationId": "2d098fef933340bc119be248b7621f29",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -210,7 +223,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Menampilkan detail jenis senjata berdasarkan ID",
-                "operationId": "bb01b1cb62b15da6f44db0d167996cc0",
+                "operationId": "986f4acbaba0e51df3014762c93527e0",
                 "parameters": [
                     {
                         "name": "id",
@@ -235,7 +248,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Mengubah data jenis senjata berdasarkan ID",
-                "operationId": "39b939327b558be657ff44e56109b1d4",
+                "operationId": "e8507cf1c2b0193c64309b19c50c2b8e",
                 "parameters": [
                     {
                         "name": "id",
@@ -283,7 +296,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Menghapus jenis senjata berdasarkan ID",
-                "operationId": "8679ff1bc3a8b87f0d5d9ab63c52c6d1",
+                "operationId": "2a98997a5f56cb97ce95be16e823b33a",
                 "parameters": [
                     {
                         "name": "id",
@@ -310,7 +323,7 @@
                     "Senjata"
                 ],
                 "summary": "Menampilkan semua senjata",
-                "operationId": "7074d3ce9a6bf6491686f1f6a4295098",
+                "operationId": "ebf4c7f0fe505340f9a4db992c7875b5",
                 "responses": {
                     "200": {
                         "description": "Data senjata ditemukan"
@@ -322,7 +335,7 @@
                     "Senjata"
                 ],
                 "summary": "Menyimpan senjata baru",
-                "operationId": "3fcb2b99f650b978162a04bbe1ca2f1e",
+                "operationId": "fdd96a4e830208de81513c3d656ce5e0",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -377,7 +390,7 @@
                     "Senjata"
                 ],
                 "summary": "Menampilkan senjata berdasarkan ID",
-                "operationId": "3c71e98de066fb9661f7bc68cd057f64",
+                "operationId": "f40ea220ad2e0b83954295c9b66d8f8d",
                 "parameters": [
                     {
                         "name": "id",
@@ -402,7 +415,7 @@
                     "Senjata"
                 ],
                 "summary": "Mengupdate senjata berdasarkan ID",
-                "operationId": "875fad4eb2d29fe89c3dc1362af3d2b8",
+                "operationId": "0ef8d5a6f98e93bcaaf7ee84ff7a5d62",
                 "parameters": [
                     {
                         "name": "id",
@@ -465,7 +478,7 @@
                     "Senjata"
                 ],
                 "summary": "Menghapus senjata berdasarkan ID",
-                "operationId": "220509eb425c06c9401dc50d37ce0e86",
+                "operationId": "4a1b064ae42a3457da5666fac09e5829",
                 "parameters": [
                     {
                         "name": "id",
