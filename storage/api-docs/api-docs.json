@@ -165,6 +165,155 @@
                 }
             }
         },
+        "/api/institusi": {
+            "get": {
+                "tags": [
+                    "Institusi"
+                ],
+                "summary": "Menampilkan semua institusi",
+                "operationId": "9bfa96927403033bde75d02df6326ef1",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Institusi"
+                ],
+                "summary": "Menambahkan institusi baru",
+                "operationId": "acd51e3cfad20fc6a480b07792d0e06c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_institusi",
+                                    "alamat",
+                                    "kontak"
+                                ],
+                                "properties": {
+                                    "nama_institusi": {
+                                        "type": "string",
+                                        "example": "Politeknik XYZ"
+                                    },
+                                    "alamat": {
+                                        "type": "string",
+                                        "example": "Jl. Merdeka No.123"
+                                    },
+                                    "kontak": {
+                                        "type": "string",
+                                        "example": "08123456789"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Data berhasil disimpan"
+                    }
+                }
+            }
+        },
+        "/api/institusi/{id}": {
+            "get": {
+                "tags": [
+                    "Institusi"
+                ],
+                "summary": "Menampilkan detail institusi berdasarkan ID",
+                "operationId": "5d66968560d0f43e176597f01472bb0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan"
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Institusi"
+                ],
+                "summary": "Mengupdate institusi berdasarkan ID",
+                "operationId": "f584bcb56b1531fb96891738e5513fab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama_institusi": {
+                                        "type": "string",
+                                        "example": "Universitas A"
+                                    },
+                                    "alamat": {
+                                        "type": "string",
+                                        "example": "Jl. Sudirman"
+                                    },
+                                    "kontak": {
+                                        "type": "string",
+                                        "example": "081299988877"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data berhasil diupdate"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Institusi"
+                ],
+                "summary": "Menghapus institusi berdasarkan ID",
+                "operationId": "5dfb444980157dfc5ad9b22e4aff6341",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Data berhasil dihapus"
+                    }
+                }
+            }
+        },
         "/api/jenissenjata": {
             "get": {
                 "tags": [
@@ -671,6 +820,10 @@
         {
             "name": "Gudang",
             "description": "Gudang"
+        },
+        {
+            "name": "Institusi",
+            "description": "Institusi"
         },
         {
             "name": "KaryawanGudang",
