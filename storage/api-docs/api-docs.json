@@ -629,6 +629,178 @@
                 }
             }
         },
+        "/api/lisensi": {
+            "get": {
+                "tags": [
+                    "LisensiSenjata"
+                ],
+                "summary": "Ambil semua lisensi senjata",
+                "operationId": "6ce4e9c093389d3df4aa7a107e0038fd",
+                "responses": {
+                    "200": {
+                        "description": "Sukses mengambil data lisensi"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "LisensiSenjata"
+                ],
+                "summary": "Tambah lisensi baru",
+                "operationId": "c6c509b383df2ec879aad2db1a04b656",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_senjata",
+                                    "nomor_lisensi",
+                                    "tanggal_berlaku",
+                                    "tanggal_kadaluarsa",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "id_senjata": {
+                                        "type": "integer"
+                                    },
+                                    "nomor_lisensi": {
+                                        "type": "string"
+                                    },
+                                    "tanggal_berlaku": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "tanggal_kadaluarsa": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "aktif",
+                                            "kadaluarsa",
+                                            "diperbarui"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Lisensi berhasil ditambahkan"
+                    }
+                }
+            }
+        },
+        "/api/lisensi/{id}": {
+            "get": {
+                "tags": [
+                    "LisensiSenjata"
+                ],
+                "summary": "Ambil detail lisensi",
+                "operationId": "82ceda684c94f6a507ac7b8299829cf6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail lisensi ditemukan"
+                    },
+                    "404": {
+                        "description": "Lisensi tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "LisensiSenjata"
+                ],
+                "summary": "Perbarui lisensi",
+                "operationId": "25b76096e55de0ed103ffb193c2469a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_senjata": {
+                                        "type": "integer"
+                                    },
+                                    "nomor_lisensi": {
+                                        "type": "string"
+                                    },
+                                    "tanggal_berlaku": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "tanggal_kadaluarsa": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "aktif",
+                                            "kadaluarsa",
+                                            "diperbarui"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Lisensi diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "LisensiSenjata"
+                ],
+                "summary": "Hapus lisensi",
+                "operationId": "46326254012de3a50630cbfb0f7cb30a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Lisensi dihapus"
+                    }
+                }
+            }
+        },
         "/api/senjata": {
             "get": {
                 "tags": [
@@ -828,6 +1000,10 @@
         {
             "name": "KaryawanGudang",
             "description": "KaryawanGudang"
+        },
+        {
+            "name": "LisensiSenjata",
+            "description": "LisensiSenjata"
         },
         {
             "name": "Senjata",
