@@ -317,6 +317,169 @@
                 }
             }
         },
+        "/api/karyawan-gudang": {
+            "get": {
+                "tags": [
+                    "KaryawanGudang"
+                ],
+                "summary": "Ambil semua data karyawan gudang",
+                "operationId": "497093718c5bfff681e8b8ef0f80ec3d",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "KaryawanGudang"
+                ],
+                "summary": "Simpan data karyawan baru",
+                "operationId": "25c2cc4e060fbb85c64350778e8f0924",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_gudang",
+                                    "nama_karyawan",
+                                    "posisi",
+                                    "kontak",
+                                    "tanggal_mulai"
+                                ],
+                                "properties": {
+                                    "id_gudang": {
+                                        "type": "integer"
+                                    },
+                                    "nama_karyawan": {
+                                        "type": "string"
+                                    },
+                                    "posisi": {
+                                        "type": "string"
+                                    },
+                                    "kontak": {
+                                        "type": "string"
+                                    },
+                                    "tanggal_mulai": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil disimpan"
+                    }
+                }
+            }
+        },
+        "/api/karyawan-gudang/{id}": {
+            "get": {
+                "tags": [
+                    "KaryawanGudang"
+                ],
+                "summary": "Ambil detail karyawan gudang",
+                "operationId": "6c31adcf69b6576914c251d4a176c909",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail ditemukan"
+                    },
+                    "404": {
+                        "description": "Tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "KaryawanGudang"
+                ],
+                "summary": "Update data karyawan gudang",
+                "operationId": "94f6acd6faaf553a264555956d1928d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama_karyawan": {
+                                        "type": "string"
+                                    },
+                                    "posisi": {
+                                        "type": "string"
+                                    },
+                                    "kontak": {
+                                        "type": "string"
+                                    },
+                                    "tanggal_mulai": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Berhasil diupdate"
+                    },
+                    "404": {
+                        "description": "Tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "KaryawanGudang"
+                ],
+                "summary": "Hapus karyawan gudang",
+                "operationId": "61a789b81638cb2eafbf6aa834f88de0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Tidak ditemukan"
+                    }
+                }
+            }
+        },
         "/api/senjata": {
             "get": {
                 "tags": [
@@ -508,6 +671,10 @@
         {
             "name": "Gudang",
             "description": "Gudang"
+        },
+        {
+            "name": "KaryawanGudang",
+            "description": "KaryawanGudang"
         },
         {
             "name": "Senjata",
