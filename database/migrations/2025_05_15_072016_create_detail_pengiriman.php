@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->dateTime('created_at');
 
             // Foreign keys (optional)
-            $table->foreign('id_pengiriman')->references('id')->on('pengiriman')->onDelete('cascade');
-            $table->foreign('id_senjata')->references('id')->on('senjata')->onDelete('cascade');
+            $table->foreign('id_pengiriman')->references('id_pengiriman')->on('pengiriman_senjata')->onDelete('cascade');
+            $table->foreign('id_senjata')->references('id_senjata')->on('senjatas')->onDelete('cascade');
         });
     }
 
