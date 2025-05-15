@@ -19,6 +19,80 @@
         }
     ],
     "paths": {
+        "/api/detail-pengiriman": {
+            "get": {
+                "tags": [
+                    "DetailPengiriman"
+                ],
+                "summary": "Menampilkan semua detail pengiriman",
+                "operationId": "6b8ab6556f3fabbe5ed0056a01bc608b",
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DetailPengiriman"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "DetailPengiriman"
+                ],
+                "summary": "Menambahkan data detail pengiriman",
+                "operationId": "5410fe6a0e4b91f531729167112c31d3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_pengiriman",
+                                    "id_senjata",
+                                    "jumlah",
+                                    "created_at"
+                                ],
+                                "properties": {
+                                    "id_pengiriman": {
+                                        "type": "integer"
+                                    },
+                                    "id_senjata": {
+                                        "type": "integer"
+                                    },
+                                    "jumlah": {
+                                        "type": "integer"
+                                    },
+                                    "created_at": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Data berhasil disimpan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DetailPengiriman"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/gudang": {
             "get": {
                 "tags": [
@@ -1306,10 +1380,50 @@
             }
         }
     },
+    "components": {
+        "schemas": {
+            "DetailPengiriman": {
+                "required": [
+                    "id_pengiriman",
+                    "id_senjata",
+                    "jumlah",
+                    "created_at"
+                ],
+                "properties": {
+                    "id_detail_pengiriman": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "id_pengiriman": {
+                        "type": "integer",
+                        "example": 1001
+                    },
+                    "id_senjata": {
+                        "type": "integer",
+                        "example": 2002
+                    },
+                    "jumlah": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-15T10:00:00Z"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
     "tags": [
         {
             "name": "JenisSenjata",
             "description": "Endpoint untuk mengelola data jenis senjata"
+        },
+        {
+            "name": "DetailPengiriman",
+            "description": "DetailPengiriman"
         },
         {
             "name": "Gudang",
