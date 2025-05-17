@@ -248,7 +248,45 @@
                 "operationId": "9bfa96927403033bde75d02df6326ef1",
                 "responses": {
                     "200": {
-                        "description": "Berhasil mengambil data"
+                        "description": "Berhasil mengambil data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "nama_institusi": {
+                                                "type": "string",
+                                                "example": "Politeknik XYZ"
+                                            },
+                                            "alamat": {
+                                                "type": "string",
+                                                "example": "Jl. Merdeka No.123"
+                                            },
+                                            "kontak": {
+                                                "type": "string",
+                                                "example": "08123456789"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2025-05-17T14:30:00.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2025-05-17T14:30:00.000000Z"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -289,7 +327,70 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Data berhasil disimpan"
+                        "description": "Data berhasil disimpan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nama_institusi": {
+                                            "type": "string",
+                                            "example": "Politeknik XYZ"
+                                        },
+                                        "alamat": {
+                                            "type": "string",
+                                            "example": "Jl. Merdeka No.123"
+                                        },
+                                        "kontak": {
+                                            "type": "string",
+                                            "example": "08123456789"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-05-17T14:30:00.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-05-17T14:30:00.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validasi gagal",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "nama_institusi": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Nama institusi harus diisi."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -305,6 +406,7 @@
                     {
                         "name": "id",
                         "in": "path",
+                        "description": "ID dari institusi",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -313,10 +415,58 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data ditemukan"
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nama_institusi": {
+                                            "type": "string",
+                                            "example": "Politeknik XYZ"
+                                        },
+                                        "alamat": {
+                                            "type": "string",
+                                            "example": "Jl. Merdeka No.123"
+                                        },
+                                        "kontak": {
+                                            "type": "string",
+                                            "example": "08123456789"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-05-17T14:30:00.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-05-17T14:30:00.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Data tidak ditemukan"
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Institusi] 1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -330,6 +480,7 @@
                     {
                         "name": "id",
                         "in": "path",
+                        "description": "ID dari institusi",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -337,6 +488,7 @@
                     }
                 ],
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -361,7 +513,86 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Data berhasil diupdate"
+                        "description": "Data berhasil diupdate",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nama_institusi": {
+                                            "type": "string",
+                                            "example": "Universitas A"
+                                        },
+                                        "alamat": {
+                                            "type": "string",
+                                            "example": "Jl. Sudirman"
+                                        },
+                                        "kontak": {
+                                            "type": "string",
+                                            "example": "081299988877"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-05-17T14:30:00.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-05-17T14:35:00.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Institusi] 1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validasi gagal",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "nama_institusi": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Nama institusi terlalu panjang."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -375,6 +606,7 @@
                     {
                         "name": "id",
                         "in": "path",
+                        "description": "ID dari institusi",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -384,6 +616,22 @@
                 "responses": {
                     "204": {
                         "description": "Data berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Institusi] 1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
