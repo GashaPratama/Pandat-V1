@@ -11,7 +11,7 @@ use OpenApi\Annotations as OA;
 /**
  * @OA\Tag(
  *     name="JenisSenjata",
- *     description="Endpoint untuk mengelola data jenis senjata"
+ *     description="JenisSenjata"
  * )
  */
 class JenisSenjataController extends Controller

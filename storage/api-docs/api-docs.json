@@ -1667,7 +1667,7 @@
     "tags": [
         {
             "name": "JenisSenjata",
-            "description": "Endpoint untuk mengelola data jenis senjata"
+            "description": "JenisSenjata"
         },
         {
             "name": "DetailPengiriman",
