@@ -14,14 +14,14 @@ use App\Http\Controllers\Api\{
     SenjataController
 };
 
-Route::apiResource('detailpengiriman', DetailPengirimanController::class);
+Route::apiResource('detail-pengiriman', DetailPengirimanController::class);
 Route::apiResource('gudang', GudangController::class);
 Route::apiResource('institusi', InstitusiController::class);
 Route::apiResource('jenissenjata', JenisSenjataController::class);
-Route::apiResource('karyawangudang', KaryawanGudangController::class);
-Route::apiResource('lisensisenjata', LisensiSenjataController::class);
-Route::apiResource('pengirimansenjata', PengirimanSenjataController::class);
-Route::apiResource('perawatansenjata', PerawatanSenjataController::class);
+Route::apiResource('karyawan-gudang', KaryawanGudangController::class);
+Route::apiResource('lisensi', LisensiSenjataController::class);
+Route::apiResource('pengiriman', PengirimanSenjataController::class);
+Route::apiResource('perawatan', PerawatanSenjataController::class);
 Route::apiResource('senjata', SenjataController::class);
 
 // Route::group([], function () {

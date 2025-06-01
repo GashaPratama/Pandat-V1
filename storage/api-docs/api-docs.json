@@ -19,13 +19,13 @@
         }
     ],
     "paths": {
-        "/api/detail-pengiriman": {
+        "/detail-pengiriman": {
             "get": {
                 "tags": [
                     "DetailPengiriman"
                 ],
                 "summary": "Menampilkan semua detail pengiriman",
-                "operationId": "6b8ab6556f3fabbe5ed0056a01bc608b",
+                "operationId": "61df19f560d29df7b20a509e805959eb",
                 "responses": {
                     "200": {
                         "description": "Data ditemukan",
@@ -47,7 +47,7 @@
                     "DetailPengiriman"
                 ],
                 "summary": "Menambahkan data detail pengiriman",
-                "operationId": "5410fe6a0e4b91f531729167112c31d3",
+                "operationId": "8fee43dbacb52fbceb22805b3702439a",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -93,13 +93,13 @@
                 }
             }
         },
-        "/api/gudang": {
+        "/gudang": {
             "get": {
                 "tags": [
                     "Gudang"
                 ],
                 "summary": "Tampilkan semua gudang",
-                "operationId": "8efe7ecdab967baeaede583c79470389",
+                "operationId": "7269fb5e877fd7348c209e60eae24b59",
                 "responses": {
                     "200": {
                         "description": "Data gudang ditemukan"
@@ -111,7 +111,7 @@
                     "Gudang"
                 ],
                 "summary": "Tambah gudang baru",
-                "operationId": "9a0b8a375dcecc98dddc9c33216e51a5",
+                "operationId": "60e0e08e74ab1d0ef9fb32da20c57402",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -145,13 +145,13 @@
                 }
             }
         },
-        "/api/gudang/{id}": {
+        "/gudang/{id}": {
             "get": {
                 "tags": [
                     "Gudang"
                 ],
                 "summary": "Tampilkan gudang berdasarkan ID",
-                "operationId": "4ebade4469b8d5cbdacdd596299ed180",
+                "operationId": "1854a0d096e0df82cdf9e28821faa7a9",
                 "parameters": [
                     {
                         "name": "id",
@@ -173,7 +173,7 @@
                     "Gudang"
                 ],
                 "summary": "Update gudang berdasarkan ID",
-                "operationId": "f23c411e7e8e036745451e60c9f2518c",
+                "operationId": "ba5161af750ff133ad819307d64a4cb7",
                 "parameters": [
                     {
                         "name": "id",
@@ -221,7 +221,7 @@
                     "Gudang"
                 ],
                 "summary": "Hapus gudang berdasarkan ID",
-                "operationId": "a2a4511dc94b253c9ca15a86fd67f5f1",
+                "operationId": "f86ba99ecfe880f601c8126c459d9271",
                 "parameters": [
                     {
                         "name": "id",
@@ -636,13 +636,13 @@
                 }
             }
         },
-        "/api/jenissenjata": {
+        "/jenissenjata": {
             "get": {
                 "tags": [
                     "JenisSenjata"
                 ],
                 "summary": "Menampilkan seluruh data jenis senjata",
-                "operationId": "17818a1d16e6f179b50f275bace3779f",
+                "operationId": "f02672db7fc2acb405b752b60fd314fc",
                 "responses": {
                     "200": {
                         "description": "Berhasil menampilkan semua jenis senjata"
@@ -654,7 +654,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Membuat jenis senjata baru",
-                "operationId": "2d098fef933340bc119be248b7621f29",
+                "operationId": "f13ff059d50caf60896533a4690886c0",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -688,13 +688,13 @@
                 }
             }
         },
-        "/api/jenissenjata/{id}": {
+        "/jenissenjata/{id}": {
             "get": {
                 "tags": [
                     "JenisSenjata"
                 ],
                 "summary": "Menampilkan detail jenis senjata berdasarkan ID",
-                "operationId": "986f4acbaba0e51df3014762c93527e0",
+                "operationId": "2051df95d0e5035802e483a6616d3c4d",
                 "parameters": [
                     {
                         "name": "id",
@@ -719,7 +719,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Mengubah data jenis senjata berdasarkan ID",
-                "operationId": "e8507cf1c2b0193c64309b19c50c2b8e",
+                "operationId": "45eb9154c4590429412dbf44ca4f112c",
                 "parameters": [
                     {
                         "name": "id",
@@ -767,7 +767,7 @@
                     "JenisSenjata"
                 ],
                 "summary": "Menghapus jenis senjata berdasarkan ID",
-                "operationId": "2a98997a5f56cb97ce95be16e823b33a",
+                "operationId": "77978d82d74da2a485c00dde20459737",
                 "parameters": [
                     {
                         "name": "id",
@@ -788,13 +788,13 @@
                 }
             }
         },
-        "/api/karyawan-gudang": {
+        "/karyawan-gudang": {
             "get": {
                 "tags": [
                     "KaryawanGudang"
                 ],
                 "summary": "Ambil semua data karyawan gudang",
-                "operationId": "497093718c5bfff681e8b8ef0f80ec3d",
+                "operationId": "77eb8cabefa79e7c97cf3c143a3303c5",
                 "responses": {
                     "200": {
                         "description": "Berhasil mengambil data"
@@ -806,7 +806,7 @@
                     "KaryawanGudang"
                 ],
                 "summary": "Simpan data karyawan baru",
-                "operationId": "25c2cc4e060fbb85c64350778e8f0924",
+                "operationId": "11d5f4b5572fe01473fdf630f1164bdc",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -849,13 +849,13 @@
                 }
             }
         },
-        "/api/karyawan-gudang/{id}": {
+        "/karyawan-gudang/{id}": {
             "get": {
                 "tags": [
                     "KaryawanGudang"
                 ],
                 "summary": "Ambil detail karyawan gudang",
-                "operationId": "6c31adcf69b6576914c251d4a176c909",
+                "operationId": "a94d89d69abb4fdbb16bce937872e255",
                 "parameters": [
                     {
                         "name": "id",
@@ -880,7 +880,7 @@
                     "KaryawanGudang"
                 ],
                 "summary": "Update data karyawan gudang",
-                "operationId": "94f6acd6faaf553a264555956d1928d6",
+                "operationId": "760d3e26adce65063796bb02efe33341",
                 "parameters": [
                     {
                         "name": "id",
@@ -930,7 +930,7 @@
                     "KaryawanGudang"
                 ],
                 "summary": "Hapus karyawan gudang",
-                "operationId": "61a789b81638cb2eafbf6aa834f88de0",
+                "operationId": "fc60d18916f18f284ed480cb678979d3",
                 "parameters": [
                     {
                         "name": "id",
@@ -951,13 +951,13 @@
                 }
             }
         },
-        "/api/lisensi": {
+        "/lisensi": {
             "get": {
                 "tags": [
                     "LisensiSenjata"
                 ],
                 "summary": "Ambil semua lisensi senjata",
-                "operationId": "6ce4e9c093389d3df4aa7a107e0038fd",
+                "operationId": "994775a1abab0d6aa551c668b411b12c",
                 "responses": {
                     "200": {
                         "description": "Sukses mengambil data lisensi"
@@ -969,7 +969,7 @@
                     "LisensiSenjata"
                 ],
                 "summary": "Tambah lisensi baru",
-                "operationId": "c6c509b383df2ec879aad2db1a04b656",
+                "operationId": "219a5c2355cd6e4843b698b149ef2d47",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1018,13 +1018,13 @@
                 }
             }
         },
-        "/api/lisensi/{id}": {
+        "/lisensi/{id}": {
             "get": {
                 "tags": [
                     "LisensiSenjata"
                 ],
                 "summary": "Ambil detail lisensi",
-                "operationId": "82ceda684c94f6a507ac7b8299829cf6",
+                "operationId": "8999fb7b9469cc102aa4f2c26d9001ac",
                 "parameters": [
                     {
                         "name": "id",
@@ -1049,7 +1049,7 @@
                     "LisensiSenjata"
                 ],
                 "summary": "Perbarui lisensi",
-                "operationId": "25b76096e55de0ed103ffb193c2469a8",
+                "operationId": "8683c70f8e9243b603658cd65e701c05",
                 "parameters": [
                     {
                         "name": "id",
@@ -1105,7 +1105,7 @@
                     "LisensiSenjata"
                 ],
                 "summary": "Hapus lisensi",
-                "operationId": "46326254012de3a50630cbfb0f7cb30a",
+                "operationId": "997d7124c1112dfd12fb9148f8ba4579",
                 "parameters": [
                     {
                         "name": "id",
@@ -1123,13 +1123,13 @@
                 }
             }
         },
-        "/api/pengiriman": {
+        "/pengiriman": {
             "get": {
                 "tags": [
                     "PengirimanSenjata"
                 ],
                 "summary": "Ambil semua pengiriman senjata",
-                "operationId": "67c706f9cbc358de70e597275fda7c3b",
+                "operationId": "497d315646d0928516962f58a36b6f2a",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -1141,7 +1141,7 @@
                     "PengirimanSenjata"
                 ],
                 "summary": "Tambah pengiriman baru",
-                "operationId": "943c3fb37f7dda6cf8c9b4af0b6d04a3",
+                "operationId": "7a84f7ad09c2d1c31afbdca314db1348",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1185,13 +1185,13 @@
                 }
             }
         },
-        "/api/pengiriman/{id}": {
+        "/pengiriman/{id}": {
             "get": {
                 "tags": [
                     "PengirimanSenjata"
                 ],
                 "summary": "Ambil detail pengiriman",
-                "operationId": "60d504ca127dda4f623f7fcb9180170c",
+                "operationId": "7467634cb9723b34f8b24de84f3dbcb1",
                 "parameters": [
                     {
                         "name": "id",
@@ -1216,7 +1216,7 @@
                     "PengirimanSenjata"
                 ],
                 "summary": "Perbarui pengiriman",
-                "operationId": "53d5120f8deec825fcea3885f7f95bba",
+                "operationId": "f97ef1b53d6f20a8b0dc905a9db0fd7b",
                 "parameters": [
                     {
                         "name": "id",
@@ -1268,7 +1268,7 @@
                     "PengirimanSenjata"
                 ],
                 "summary": "Hapus pengiriman",
-                "operationId": "1fb9ae7f06daeb8bb0054982e268badc",
+                "operationId": "d5ddfb2821c202d76992419e0f2d4f4e",
                 "parameters": [
                     {
                         "name": "id",
@@ -1286,13 +1286,13 @@
                 }
             }
         },
-        "/api/perawatan": {
+        "/perawatan": {
             "get": {
                 "tags": [
                     "PerawatanSenjata"
                 ],
                 "summary": "Ambil semua data perawatan senjata",
-                "operationId": "4ea5e9307c296f20abd9622b82d2f8cc",
+                "operationId": "55ead96c0ebfc456c9ffc4b930882de5",
                 "responses": {
                     "200": {
                         "description": "Sukses mengambil data"
@@ -1304,7 +1304,7 @@
                     "PerawatanSenjata"
                 ],
                 "summary": "Tambah data perawatan senjata",
-                "operationId": "4b4c654534635cb8fea1441a9c78ea06",
+                "operationId": "96f333f477ff5561d23e9d4d1d9e65f5",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1343,13 +1343,13 @@
                 }
             }
         },
-        "/api/perawatan/{id}": {
+        "/perawatan/{id}": {
             "get": {
                 "tags": [
                     "PerawatanSenjata"
                 ],
                 "summary": "Ambil detail perawatan berdasarkan ID",
-                "operationId": "0392fe8d5ae61edc9b013f5abd366b68",
+                "operationId": "571fb5cb82dbe8651005144c94c0a45a",
                 "parameters": [
                     {
                         "name": "id",
@@ -1374,7 +1374,7 @@
                     "PerawatanSenjata"
                 ],
                 "summary": "Perbarui data perawatan senjata",
-                "operationId": "31048af11df2e55db65fd4b25ace98ce",
+                "operationId": "6a452893f97ea3f48189da82e214a1e8",
                 "parameters": [
                     {
                         "name": "id",
@@ -1424,7 +1424,7 @@
                     "PerawatanSenjata"
                 ],
                 "summary": "Hapus data perawatan senjata",
-                "operationId": "50a9db4e238d75c4940fc2925282bcaf",
+                "operationId": "fc9b45dee29e619652e7aa5d1916e3fd",
                 "parameters": [
                     {
                         "name": "id",
@@ -1445,13 +1445,13 @@
                 }
             }
         },
-        "/api/senjata": {
+        "/senjata": {
             "get": {
                 "tags": [
                     "Senjata"
                 ],
                 "summary": "Menampilkan semua senjata",
-                "operationId": "ebf4c7f0fe505340f9a4db992c7875b5",
+                "operationId": "8dbf22610d7ecef53e9faf64a09d4185",
                 "responses": {
                     "200": {
                         "description": "Data senjata ditemukan"
@@ -1463,7 +1463,7 @@
                     "Senjata"
                 ],
                 "summary": "Menyimpan senjata baru",
-                "operationId": "fdd96a4e830208de81513c3d656ce5e0",
+                "operationId": "ece9e9afadab98cabeb5a4fdf5867ad9",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1512,13 +1512,13 @@
                 }
             }
         },
-        "/api/senjata/{id}": {
+        "/senjata/{id}": {
             "get": {
                 "tags": [
                     "Senjata"
                 ],
                 "summary": "Menampilkan senjata berdasarkan ID",
-                "operationId": "f40ea220ad2e0b83954295c9b66d8f8d",
+                "operationId": "7e65da47b172b332f0d6954c5db4a2f6",
                 "parameters": [
                     {
                         "name": "id",
@@ -1543,7 +1543,7 @@
                     "Senjata"
                 ],
                 "summary": "Mengupdate senjata berdasarkan ID",
-                "operationId": "0ef8d5a6f98e93bcaaf7ee84ff7a5d62",
+                "operationId": "7ef6e51095b55c6c5664553eb9873c9c",
                 "parameters": [
                     {
                         "name": "id",
@@ -1606,7 +1606,7 @@
                     "Senjata"
                 ],
                 "summary": "Menghapus senjata berdasarkan ID",
-                "operationId": "4a1b064ae42a3457da5666fac09e5829",
+                "operationId": "15bcab3fa91f1c40f9ea568d22d2d72d",
                 "parameters": [
                     {
                         "name": "id",
