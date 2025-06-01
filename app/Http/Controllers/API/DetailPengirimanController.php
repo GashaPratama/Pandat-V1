@@ -63,16 +63,149 @@ class DetailPengirimanController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            $data = $request->validate([
+                'id_pengiriman' => 'required|integer|exists:pengiriman,id_pengiriman',
+                'id_senjata' => 'required|integer|exists:senjata,id_senjata',
+                'jumlah' => 'required|integer|min:1',
+                'created_at' => 'required|date'
+            ]);
+
+            $detail = DetailPengiriman::create($data);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data detail pengiriman berhasil disimpan',
+                'data' => $detail
+            ], 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validasi gagal',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan saat menyimpan data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @OA\Put(
+     *     path="/detail-pengiriman/{id}",
+     *     tags={"DetailPengiriman"},
+     *     summary="Mengupdate data detail pengiriman",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"id_pengiriman","id_senjata","jumlah","created_at"},
+     *             @OA\Property(property="id_pengiriman", type="integer"),
+     *             @OA\Property(property="id_senjata", type="integer"),
+     *             @OA\Property(property="jumlah", type="integer"),
+     *             @OA\Property(property="created_at", type="string", format="date-time")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data berhasil diupdate",
+     *         @OA\JsonContent(ref="#/components/schemas/DetailPengiriman")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Data tidak ditemukan"
+     *     )
+     * )
+     */
+    public function update(Request $request, $id)
+    {
         $data = $request->validate([
-            'id_pengiriman' => 'required|integer',
-            'id_senjata' => 'required|integer',
-            'jumlah' => 'required|integer',
+            'id_pengiriman' => 'required|integer|exists:pengiriman,id_pengiriman',
+            'id_senjata' => 'required|integer|exists:senjata,id_senjata',
+            'jumlah' => 'required|integer|min:1',
             'created_at' => 'required|date'
         ]);
 
-        $detail = DetailPengiriman::create($data);
+        $detail = DetailPengiriman::find($id);
+        if (!$detail) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
 
-        return response()->json($detail, 201);
+        $detail->update($data);
+
+        return response()->json($detail);
+    }
+
+    /**
+     * @OA\Delete(
+     *     path="/detail-pengiriman/{id}",
+     *     tags={"DetailPengiriman"},
+     *     summary="Menghapus data detail pengiriman",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data berhasil dihapus"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Data tidak ditemukan"
+     *     )
+     * )
+     */
+    public function destroy($id)
+    {
+        $detail = DetailPengiriman::find($id);
+        if (!$detail) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+
+        $detail->delete();
+
+        return response()->json(['message' => 'Data berhasil dihapus']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/detail-pengiriman/{id}",
+     *     tags={"DetailPengiriman"},
+     *     summary="Menampilkan detail pengiriman berdasarkan ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Data ditemukan",
+     *         @OA\JsonContent(ref="#/components/schemas/DetailPengiriman")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Data tidak ditemukan"
+     *     )
+     * )
+     */
+    public function show($id)
+    {
+        $detail = DetailPengiriman::find($id);
+        if (!$detail) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+        return response()->json($detail);
     }
 }
 

@@ -43,20 +43,27 @@ class KaryawanGudangController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'id_gudang' => 'required|exists:gudangs,id_gudang',
-            'nama_karyawan' => 'required|string|max:100',
-            'posisi' => 'required|string|max:50',
-            'kontak' => 'required|string|max:100',
-            'tanggal_mulai' => 'required|date',
-        ]);
+        try {
+            $validated = $request->validate([
+                'id_gudang' => 'required|exists:gudangs,id_gudang',
+                'nama_karyawan' => 'required|string|max:100',
+                'posisi' => 'required|string|max:50',
+                'kontak' => 'required|string|max:100',
+                'tanggal_mulai' => 'required|date',
+            ]);
 
-        $karyawan = KaryawanGudang::create([
-            ...$validated,
-            'created_at' => now()
-        ]);
+            $karyawan = KaryawanGudang::create($validated);
 
-        return response()->json($karyawan, 201);
+            return response()->json([
+                'message' => 'Data karyawan berhasil disimpan',
+                'data' => $karyawan
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menyimpan data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -106,17 +113,29 @@ class KaryawanGudangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $karyawan = KaryawanGudang::findOrFail($id);
+        try {
+            $karyawan = KaryawanGudang::findOrFail($id);
 
-        $validated = $request->validate([
-            'nama_karyawan' => 'string|max:100',
-            'posisi' => 'string|max:50',
-            'kontak' => 'string|max:100',
-            'tanggal_mulai' => 'date',
-        ]);
+            $validated = $request->validate([
+                'id_gudang' => 'sometimes|exists:gudangs,id_gudang',
+                'nama_karyawan' => 'sometimes|string|max:100',
+                'posisi' => 'sometimes|string|max:50',
+                'kontak' => 'sometimes|string|max:100',
+                'tanggal_mulai' => 'sometimes|date',
+            ]);
 
-        $karyawan->update($validated);
-        return response()->json($karyawan);
+            $karyawan->update($validated);
+
+            return response()->json([
+                'message' => 'Data karyawan berhasil diperbarui',
+                'data' => $karyawan
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat memperbarui data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -136,8 +155,18 @@ class KaryawanGudangController extends Controller
      */
     public function destroy($id)
     {
-        $karyawan = KaryawanGudang::findOrFail($id);
-        $karyawan->delete();
-        return response()->json(null, 204);
+        try {
+            $karyawan = KaryawanGudang::findOrFail($id);
+            $karyawan->delete();
+
+            return response()->json([
+                'message' => 'Data karyawan berhasil dihapus'
+            ], 204);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menghapus data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

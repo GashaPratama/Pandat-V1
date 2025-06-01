@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\LisensiSenjata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 class LisensiSenjataController extends Controller
 {
     /**
@@ -19,7 +22,18 @@ class LisensiSenjataController extends Controller
      */
     public function index()
     {
-        // logika mengambil semua lisensi
+        try {
+            $lisensi = LisensiSenjata::with('senjata')->get();
+            return response()->json([
+                'message' => 'Data lisensi berhasil diambil',
+                'data' => $lisensi
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat mengambil data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -46,7 +60,34 @@ class LisensiSenjataController extends Controller
      */
     public function store(Request $request)
     {
-        // logika menyimpan lisensi
+        try {
+            $validator = Validator::make($request->all(), [
+                'id_senjata' => 'required|exists:senjatas,id',
+                'nomor_lisensi' => 'required|string|unique:lisensi_senjatas,nomor_lisensi',
+                'tanggal_berlaku' => 'required|date',
+                'tanggal_kadaluarsa' => 'required|date|after:tanggal_berlaku',
+                'status' => 'required|in:aktif,kadaluarsa,diperbarui'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => 'Validasi gagal',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            $lisensi = LisensiSenjata::create($request->all());
+
+            return response()->json([
+                'message' => 'Lisensi berhasil ditambahkan',
+                'data' => $lisensi
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menambahkan lisensi',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -66,7 +107,18 @@ class LisensiSenjataController extends Controller
      */
     public function show($id)
     {
-        // logika menampilkan lisensi berdasarkan ID
+        try {
+            $lisensi = LisensiSenjata::with('senjata')->findOrFail($id);
+            return response()->json([
+                'message' => 'Detail lisensi berhasil diambil',
+                'data' => $lisensi
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Lisensi tidak ditemukan',
+                'error' => $e->getMessage()
+            ], 404);
+        }
     }
 
     /**
@@ -95,7 +147,36 @@ class LisensiSenjataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // logika update lisensi
+        try {
+            $lisensi = LisensiSenjata::findOrFail($id);
+
+            $validator = Validator::make($request->all(), [
+                'id_senjata' => 'sometimes|exists:senjatas,id',
+                'nomor_lisensi' => 'sometimes|string|unique:lisensi_senjatas,nomor_lisensi,' . $id,
+                'tanggal_berlaku' => 'sometimes|date',
+                'tanggal_kadaluarsa' => 'sometimes|date|after:tanggal_berlaku',
+                'status' => 'sometimes|in:aktif,kadaluarsa,diperbarui'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => 'Validasi gagal',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            $lisensi->update($request->all());
+
+            return response()->json([
+                'message' => 'Lisensi berhasil diperbarui',
+                'data' => $lisensi
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat memperbarui lisensi',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -114,6 +195,18 @@ class LisensiSenjataController extends Controller
      */
     public function destroy($id)
     {
-        // logika hapus lisensi
+        try {
+            $lisensi = LisensiSenjata::findOrFail($id);
+            $lisensi->delete();
+
+            return response()->json([
+                'message' => 'Lisensi berhasil dihapus'
+            ], 204);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menghapus lisensi',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

@@ -93,6 +93,128 @@
                 }
             }
         },
+        "/detail-pengiriman/{id}": {
+            "get": {
+                "tags": [
+                    "DetailPengiriman"
+                ],
+                "summary": "Menampilkan detail pengiriman berdasarkan ID",
+                "operationId": "39f1c8f7c8d7c0ec0c4d4347dacb567d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DetailPengiriman"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DetailPengiriman"
+                ],
+                "summary": "Mengupdate data detail pengiriman",
+                "operationId": "203098f7913d8db7b673a9d9fc42d660",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_pengiriman",
+                                    "id_senjata",
+                                    "jumlah",
+                                    "created_at"
+                                ],
+                                "properties": {
+                                    "id_pengiriman": {
+                                        "type": "integer"
+                                    },
+                                    "id_senjata": {
+                                        "type": "integer"
+                                    },
+                                    "jumlah": {
+                                        "type": "integer"
+                                    },
+                                    "created_at": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data berhasil diupdate",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DetailPengiriman"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DetailPengiriman"
+                ],
+                "summary": "Menghapus data detail pengiriman",
+                "operationId": "69701dac8ca200dc0b51fd9651c1f6f7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            }
+        },
         "/gudang": {
             "get": {
                 "tags": [
