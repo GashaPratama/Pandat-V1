@@ -239,13 +239,13 @@
                 }
             }
         },
-        "/api/institusi": {
+        "/institusi": {
             "get": {
                 "tags": [
                     "Institusi"
                 ],
                 "summary": "Menampilkan semua institusi",
-                "operationId": "9bfa96927403033bde75d02df6326ef1",
+                "operationId": "8d633c42e01e6e505d09914255a4f7d4",
                 "responses": {
                     "200": {
                         "description": "Berhasil mengambil data",
@@ -295,7 +295,7 @@
                     "Institusi"
                 ],
                 "summary": "Menambahkan institusi baru",
-                "operationId": "acd51e3cfad20fc6a480b07792d0e06c",
+                "operationId": "f203b1d79aba993aabf1300b359f1e29",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -395,13 +395,13 @@
                 }
             }
         },
-        "/api/institusi/{id}": {
+        "/institusi/{id}": {
             "get": {
                 "tags": [
                     "Institusi"
                 ],
                 "summary": "Menampilkan detail institusi berdasarkan ID",
-                "operationId": "5d66968560d0f43e176597f01472bb0b",
+                "operationId": "77daf0c7eda63a934ddb672d0209d5fd",
                 "parameters": [
                     {
                         "name": "id",
@@ -475,7 +475,7 @@
                     "Institusi"
                 ],
                 "summary": "Mengupdate institusi berdasarkan ID",
-                "operationId": "f584bcb56b1531fb96891738e5513fab",
+                "operationId": "79214d64805260ff23ebb0d23459e32b",
                 "parameters": [
                     {
                         "name": "id",
@@ -601,7 +601,7 @@
                     "Institusi"
                 ],
                 "summary": "Menghapus institusi berdasarkan ID",
-                "operationId": "5dfb444980157dfc5ad9b22e4aff6341",
+                "operationId": "7bdbbf1b0fbcdd283988294e33bb6d8a",
                 "parameters": [
                     {
                         "name": "id",

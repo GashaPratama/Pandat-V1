@@ -12,7 +12,7 @@ class InstitusiController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/institusi",
+     *     path="/institusi",
      *     summary="Menampilkan semua institusi",
      *     tags={"Institusi"},
      *     @OA\Response(
@@ -40,7 +40,7 @@ class InstitusiController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/institusi",
+     *     path="/institusi",
      *     summary="Menambahkan institusi baru",
      *     tags={"Institusi"},
      *     @OA\RequestBody(
@@ -96,7 +96,7 @@ class InstitusiController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/institusi/{id}",
+     *     path="/institusi/{id}",
      *     summary="Menampilkan detail institusi berdasarkan ID",
      *     tags={"Institusi"},
      *     @OA\Parameter(
@@ -135,7 +135,7 @@ class InstitusiController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/institusi/{id}",
+     *     path="/institusi/{id}",
      *     summary="Mengupdate institusi berdasarkan ID",
      *     tags={"Institusi"},
      *     @OA\Parameter(
@@ -206,7 +206,7 @@ class InstitusiController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/institusi/{id}",
+     *     path="/institusi/{id}",
      *     summary="Menghapus institusi berdasarkan ID",
      *     tags={"Institusi"},
      *     @OA\Parameter(
