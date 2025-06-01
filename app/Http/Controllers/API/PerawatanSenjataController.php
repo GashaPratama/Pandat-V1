@@ -10,7 +10,7 @@ class PerawatanSenjataController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/perawatan",
+     *     path="/perawatan",
      *     summary="Ambil semua data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\Response(
@@ -26,7 +26,7 @@ class PerawatanSenjataController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/perawatan",
+     *     path="/perawatan",
      *     summary="Tambah data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\RequestBody(
@@ -57,7 +57,7 @@ class PerawatanSenjataController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/perawatan/{id}",
+     *     path="/perawatan/{id}",
      *     summary="Ambil detail perawatan berdasarkan ID",
      *     tags={"PerawatanSenjata"},
      *     @OA\Parameter(
@@ -78,7 +78,7 @@ class PerawatanSenjataController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/perawatan/{id}",
+     *     path="/perawatan/{id}",
      *     summary="Perbarui data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\Parameter(
@@ -120,7 +120,7 @@ class PerawatanSenjataController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/perawatan/{id}",
+     *     path="/perawatan/{id}",
      *     summary="Hapus data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\Parameter(

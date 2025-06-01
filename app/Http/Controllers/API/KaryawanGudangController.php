@@ -11,7 +11,7 @@ class KaryawanGudangController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/karyawan-gudang",
+     *     path="/karyawan-gudang",
      *     tags={"KaryawanGudang"},
      *     summary="Ambil semua data karyawan gudang",
      *     @OA\Response(response=200, description="Berhasil mengambil data")
@@ -24,7 +24,7 @@ class KaryawanGudangController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/karyawan-gudang",
+     *     path="/karyawan-gudang",
      *     tags={"KaryawanGudang"},
      *     summary="Simpan data karyawan baru",
      *     @OA\RequestBody(
@@ -61,7 +61,7 @@ class KaryawanGudangController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/karyawan-gudang/{id}",
+     *     path="/karyawan-gudang/{id}",
      *     tags={"KaryawanGudang"},
      *     summary="Ambil detail karyawan gudang",
      *     @OA\Parameter(
@@ -82,7 +82,7 @@ class KaryawanGudangController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/karyawan-gudang/{id}",
+     *     path="/karyawan-gudang/{id}",
      *     tags={"KaryawanGudang"},
      *     summary="Update data karyawan gudang",
      *     @OA\Parameter(
@@ -121,7 +121,7 @@ class KaryawanGudangController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/karyawan-gudang/{id}",
+     *     path="/karyawan-gudang/{id}",
      *     tags={"KaryawanGudang"},
      *     summary="Hapus karyawan gudang",
      *     @OA\Parameter(

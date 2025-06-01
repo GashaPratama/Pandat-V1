@@ -18,7 +18,7 @@ class JenisSenjataController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/jenissenjata",
+     *     path="/jenissenjata",
      *     summary="Menampilkan seluruh data jenis senjata",
      *     tags={"JenisSenjata"},
      *     @OA\Response(
@@ -40,7 +40,7 @@ class JenisSenjataController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/jenissenjata",
+     *     path="/jenissenjata",
      *     summary="Membuat jenis senjata baru",
      *     tags={"JenisSenjata"},
      *     @OA\RequestBody(
@@ -79,7 +79,7 @@ class JenisSenjataController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/jenissenjata/{id}",
+     *     path="/jenissenjata/{id}",
      *     summary="Menampilkan detail jenis senjata berdasarkan ID",
      *     tags={"JenisSenjata"},
      *     @OA\Parameter(
@@ -118,7 +118,7 @@ class JenisSenjataController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/jenissenjata/{id}",
+     *     path="/jenissenjata/{id}",
      *     summary="Mengubah data jenis senjata berdasarkan ID",
      *     tags={"JenisSenjata"},
      *     @OA\Parameter(
@@ -176,7 +176,7 @@ class JenisSenjataController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/jenissenjata/{id}",
+     *     path="/jenissenjata/{id}",
      *     summary="Menghapus jenis senjata berdasarkan ID",
      *     tags={"JenisSenjata"},
      *     @OA\Parameter(

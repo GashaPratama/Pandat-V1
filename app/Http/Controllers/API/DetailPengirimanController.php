@@ -24,7 +24,7 @@ class DetailPengirimanController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/detail-pengiriman",
+     *     path="/detail-pengiriman",
      *     tags={"DetailPengiriman"},
      *     summary="Menampilkan semua detail pengiriman",
      *     @OA\Response(
@@ -41,7 +41,7 @@ class DetailPengirimanController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/detail-pengiriman",
+     *     path="/detail-pengiriman",
      *     tags={"DetailPengiriman"},
      *     summary="Menambahkan data detail pengiriman",
      *     @OA\RequestBody(

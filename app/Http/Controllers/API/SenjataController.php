@@ -14,7 +14,7 @@ class SenjataController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/senjata",
+     *     path="/senjata",
      *     summary="Menampilkan semua senjata",
      *     tags={"Senjata"},
      *     @OA\Response(
@@ -35,7 +35,7 @@ class SenjataController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/senjata",
+     *     path="/senjata",
      *     summary="Menyimpan senjata baru",
      *     tags={"Senjata"},
      *     @OA\RequestBody(
@@ -90,7 +90,7 @@ class SenjataController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/senjata/{id}",
+     *     path="/senjata/{id}",
      *     summary="Menampilkan senjata berdasarkan ID",
      *     tags={"Senjata"},
      *     @OA\Parameter(
@@ -129,7 +129,7 @@ class SenjataController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/senjata/{id}",
+     *     path="/senjata/{id}",
      *     summary="Mengupdate senjata berdasarkan ID",
      *     tags={"Senjata"},
      *     @OA\Parameter(
@@ -196,7 +196,7 @@ class SenjataController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/senjata/{id}",
+     *     path="/senjata/{id}",
      *     summary="Menghapus senjata berdasarkan ID",
      *     tags={"Senjata"},
      *     @OA\Parameter(

@@ -8,7 +8,7 @@ class LisensiSenjataController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/lisensi",
+     *     path="/lisensi",
      *     summary="Ambil semua lisensi senjata",
      *     tags={"LisensiSenjata"},
      *     @OA\Response(
@@ -24,7 +24,7 @@ class LisensiSenjataController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/lisensi",
+     *     path="/lisensi",
      *     summary="Tambah lisensi baru",
      *     tags={"LisensiSenjata"},
      *     @OA\RequestBody(
@@ -51,7 +51,7 @@ class LisensiSenjataController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/lisensi/{id}",
+     *     path="/lisensi/{id}",
      *     summary="Ambil detail lisensi",
      *     tags={"LisensiSenjata"},
      *     @OA\Parameter(
@@ -71,7 +71,7 @@ class LisensiSenjataController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/lisensi/{id}",
+     *     path="/lisensi/{id}",
      *     summary="Perbarui lisensi",
      *     tags={"LisensiSenjata"},
      *     @OA\Parameter(
@@ -100,7 +100,7 @@ class LisensiSenjataController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/lisensi/{id}",
+     *     path="/lisensi/{id}",
      *     summary="Hapus lisensi",
      *     tags={"LisensiSenjata"},
      *     @OA\Parameter(

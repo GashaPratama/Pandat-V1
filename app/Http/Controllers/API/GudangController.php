@@ -13,7 +13,7 @@ class GudangController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/gudang",
+     *     path="/gudang",
      *     summary="Tampilkan semua gudang",
      *     tags={"Gudang"},
      *     @OA\Response(
@@ -34,7 +34,7 @@ class GudangController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/gudang",
+     *     path="/gudang",
      *     summary="Tambah gudang baru",
      *     tags={"Gudang"},
      *     @OA\RequestBody(
@@ -71,7 +71,7 @@ class GudangController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/gudang/{id}",
+     *     path="/gudang/{id}",
      *     summary="Tampilkan gudang berdasarkan ID",
      *     tags={"Gudang"},
      *     @OA\Parameter(
@@ -99,7 +99,7 @@ class GudangController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/gudang/{id}",
+     *     path="/gudang/{id}",
      *     summary="Update gudang berdasarkan ID",
      *     tags={"Gudang"},
      *     @OA\Parameter(
@@ -144,7 +144,7 @@ class GudangController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/gudang/{id}",
+     *     path="/gudang/{id}",
      *     summary="Hapus gudang berdasarkan ID",
      *     tags={"Gudang"},
      *     @OA\Parameter(

@@ -10,7 +10,7 @@ class PengirimanSenjataController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/pengiriman",
+     *     path="/pengiriman",
      *     summary="Ambil semua pengiriman senjata",
      *     tags={"PengirimanSenjata"},
      *     @OA\Response(response=200, description="OK")
@@ -23,7 +23,7 @@ class PengirimanSenjataController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/pengiriman",
+     *     path="/pengiriman",
      *     summary="Tambah pengiriman baru",
      *     tags={"PengirimanSenjata"},
      *     @OA\RequestBody(
@@ -54,7 +54,7 @@ class PengirimanSenjataController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/pengiriman/{id}",
+     *     path="/pengiriman/{id}",
      *     summary="Ambil detail pengiriman",
      *     tags={"PengirimanSenjata"},
      *     @OA\Parameter(
@@ -72,7 +72,7 @@ class PengirimanSenjataController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/pengiriman/{id}",
+     *     path="/pengiriman/{id}",
      *     summary="Perbarui pengiriman",
      *     tags={"PengirimanSenjata"},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
@@ -108,7 +108,7 @@ class PengirimanSenjataController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/pengiriman/{id}",
+     *     path="/pengiriman/{id}",
      *     summary="Hapus pengiriman",
      *     tags={"PengirimanSenjata"},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
