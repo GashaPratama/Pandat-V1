@@ -84,6 +84,7 @@ class JenisSenjataController extends Controller
      *     path="/jenissenjata/{id}",
      *     summary="Menampilkan detail jenis senjata berdasarkan ID",
      *     tags={"JenisSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -123,6 +124,7 @@ class JenisSenjataController extends Controller
      *     path="/jenissenjata/{id}",
      *     summary="Mengubah data jenis senjata berdasarkan ID",
      *     tags={"JenisSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -181,6 +183,7 @@ class JenisSenjataController extends Controller
      *     path="/jenissenjata/{id}",
      *     summary="Menghapus jenis senjata berdasarkan ID",
      *     tags={"JenisSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

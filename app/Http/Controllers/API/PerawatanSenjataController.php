@@ -11,6 +11,7 @@ class PerawatanSenjataController extends Controller
     /**
      * @OA\Get(
      *     path="/perawatan",
+     *     security={{"sanctum":{}}},
      *     summary="Ambil semua data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\Response(
@@ -27,6 +28,7 @@ class PerawatanSenjataController extends Controller
     /**
      * @OA\Post(
      *     path="/perawatan",
+     *     security={{"sanctum":{}}},
      *     summary="Tambah data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\RequestBody(
@@ -58,6 +60,7 @@ class PerawatanSenjataController extends Controller
     /**
      * @OA\Get(
      *     path="/perawatan/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Ambil detail perawatan berdasarkan ID",
      *     tags={"PerawatanSenjata"},
      *     @OA\Parameter(
@@ -79,6 +82,7 @@ class PerawatanSenjataController extends Controller
     /**
      * @OA\Put(
      *     path="/perawatan/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Perbarui data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\Parameter(
@@ -121,6 +125,7 @@ class PerawatanSenjataController extends Controller
     /**
      * @OA\Delete(
      *     path="/perawatan/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Hapus data perawatan senjata",
      *     tags={"PerawatanSenjata"},
      *     @OA\Parameter(

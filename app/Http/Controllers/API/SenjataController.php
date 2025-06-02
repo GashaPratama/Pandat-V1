@@ -95,6 +95,7 @@ class SenjataController extends Controller
      *     path="/senjata/{id}",
      *     summary="Menampilkan senjata berdasarkan ID",
      *     tags={"Senjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -134,6 +135,7 @@ class SenjataController extends Controller
      *     path="/senjata/{id}",
      *     summary="Mengupdate senjata berdasarkan ID",
      *     tags={"Senjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -201,6 +203,7 @@ class SenjataController extends Controller
      *     path="/senjata/{id}",
      *     summary="Menghapus senjata berdasarkan ID",
      *     tags={"Senjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

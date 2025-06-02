@@ -20,6 +20,11 @@ class KaryawanGudang extends Model
         'created_at',
     ];
 
+    protected $casts = [
+        'tanggal_mulai' => 'datetime',
+        'created_at' => 'datetime'
+    ];
+
     /**
      * Relasi ke Gudang
      */

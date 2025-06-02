@@ -45,6 +45,7 @@ class DetailPengirimanController extends Controller
      *     path="/detail-pengiriman",
      *     tags={"DetailPengiriman"},
      *     summary="Menambahkan data detail pengiriman",
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -99,6 +100,7 @@ class DetailPengirimanController extends Controller
      *     path="/detail-pengiriman/{id}",
      *     tags={"DetailPengiriman"},
      *     summary="Mengupdate data detail pengiriman",
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -150,6 +152,7 @@ class DetailPengirimanController extends Controller
      *     path="/detail-pengiriman/{id}",
      *     tags={"DetailPengiriman"},
      *     summary="Menghapus data detail pengiriman",
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -183,6 +186,7 @@ class DetailPengirimanController extends Controller
      *     path="/detail-pengiriman/{id}",
      *     tags={"DetailPengiriman"},
      *     summary="Menampilkan detail pengiriman berdasarkan ID",
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

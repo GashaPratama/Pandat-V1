@@ -57,6 +57,7 @@ class PengirimanSenjataController extends Controller
     /**
      * @OA\Get(
      *     path="/pengiriman/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Ambil detail pengiriman",
      *     tags={"PengirimanSenjata"},
      *     @OA\Parameter(
@@ -75,6 +76,7 @@ class PengirimanSenjataController extends Controller
     /**
      * @OA\Put(
      *     path="/pengiriman/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Perbarui pengiriman",
      *     tags={"PengirimanSenjata"},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
@@ -113,6 +115,7 @@ class PengirimanSenjataController extends Controller
      *     path="/pengiriman/{id}",
      *     summary="Hapus pengiriman",
      *     tags={"PengirimanSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=204, description="Deleted")
      * )

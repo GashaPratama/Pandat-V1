@@ -13,6 +13,7 @@ class InstitusiController extends Controller
     /**
      * @OA\Get(
      *     path="/institusi",
+     *     security={{"sanctum":{}}},
      *     summary="Menampilkan semua institusi",
      *     tags={"Institusi"},
      *     @OA\Response(
@@ -41,6 +42,7 @@ class InstitusiController extends Controller
     /**
      * @OA\Post(
      *     path="/institusi",
+     *     security={{"sanctum":{}}},
      *     summary="Menambahkan institusi baru",
      *     tags={"Institusi"},
      *     @OA\RequestBody(
@@ -97,6 +99,7 @@ class InstitusiController extends Controller
     /**
      * @OA\Get(
      *     path="/institusi/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Menampilkan detail institusi berdasarkan ID",
      *     tags={"Institusi"},
      *     @OA\Parameter(
@@ -136,6 +139,7 @@ class InstitusiController extends Controller
     /**
      * @OA\Put(
      *     path="/institusi/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Mengupdate institusi berdasarkan ID",
      *     tags={"Institusi"},
      *     @OA\Parameter(
@@ -207,6 +211,7 @@ class InstitusiController extends Controller
     /**
      * @OA\Delete(
      *     path="/institusi/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Menghapus institusi berdasarkan ID",
      *     tags={"Institusi"},
      *     @OA\Parameter(

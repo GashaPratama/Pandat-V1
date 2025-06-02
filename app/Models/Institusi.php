@@ -19,9 +19,9 @@ class Institusi extends Model
         'kontak',
     ];
 
-    public function institusi()
-    {
-        return $this->belongsTo(Institusi::class, 'id_institusi', 'id_institusi');
-    }
+    // public function institusi()
+    // {
+    //     return $this->belongsTo(Institusi::class, 'id_institusi', 'id_institusi');
+    // }
 }
 

@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 // Tampilkan halaman login
-Route::view('/login', 'login')->name('login');
+Route::view('/login', 'auth/login')->name('login');
 
 // Tampilkan halaman register
-Route::view('/register', 'register')->name('register');
+Route::view('/register', 'auth/register')->name('register');
 
 // Halaman setelah login sukses (misalnya dashboard)
 Route::get('/dashboard', function () {

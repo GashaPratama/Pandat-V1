@@ -14,6 +14,7 @@ class GudangController extends Controller
     /**
      * @OA\Get(
      *     path="/gudang",
+     *     security={{"sanctum":{}}},
      *     summary="Tampilkan semua gudang",
      *     tags={"Gudang"},
      *     security={{"sanctum":{}}},
@@ -74,6 +75,7 @@ class GudangController extends Controller
     /**
      * @OA\Get(
      *     path="/gudang/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Tampilkan gudang berdasarkan ID",
      *     tags={"Gudang"},
      *     @OA\Parameter(
@@ -102,6 +104,7 @@ class GudangController extends Controller
     /**
      * @OA\Put(
      *     path="/gudang/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Update gudang berdasarkan ID",
      *     tags={"Gudang"},
      *     @OA\Parameter(
@@ -147,6 +150,7 @@ class GudangController extends Controller
     /**
      * @OA\Delete(
      *     path="/gudang/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Hapus gudang berdasarkan ID",
      *     tags={"Gudang"},
      *     @OA\Parameter(

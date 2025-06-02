@@ -54,6 +54,9 @@ class KaryawanGudangController extends Controller
                 'tanggal_mulai' => 'required|date',
             ]);
 
+            // Konversi tanggal ke format yang sesuai
+            $validated['tanggal_mulai'] = date('Y-m-d H:i:s', strtotime($validated['tanggal_mulai']));
+
             $karyawan = KaryawanGudang::create($validated);
 
             return response()->json([
@@ -71,6 +74,7 @@ class KaryawanGudangController extends Controller
     /**
      * @OA\Get(
      *     path="/karyawan-gudang/{id}",
+     *     security={{"sanctum":{}}},
      *     tags={"KaryawanGudang"},
      *     summary="Ambil detail karyawan gudang",
      *     @OA\Parameter(
@@ -94,6 +98,7 @@ class KaryawanGudangController extends Controller
      *     path="/karyawan-gudang/{id}",
      *     tags={"KaryawanGudang"},
      *     summary="Update data karyawan gudang",
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -145,6 +150,7 @@ class KaryawanGudangController extends Controller
      *     path="/karyawan-gudang/{id}",
      *     tags={"KaryawanGudang"},
      *     summary="Hapus karyawan gudang",
+     *     security={{"sanctum":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

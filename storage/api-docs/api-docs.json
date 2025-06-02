@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API Documentation",
-        "description": "Documentation for the Bookstore API",
+        "description": "Documentation untuk API Manajemen Senjata",
         "contact": {
             "email": "admin@example.com"
         },
@@ -19,6 +19,168 @@
         }
     ],
     "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "operationId": "1ff9c65c5cd1a8e0786e318eed856972",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login berhasil",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validasi gagal"
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register user baru",
+                "operationId": "c47a1b563e5e8bc3c7b962f893981e84",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Registrasi berhasil",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validasi gagal"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout user",
+                "operationId": "eae6a8251a6469bbabe454860f64cf37",
+                "responses": {
+                    "200": {
+                        "description": "Logout berhasil"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/detail-pengiriman": {
             "get": {
                 "tags": [
@@ -40,7 +202,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -90,7 +257,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/detail-pengiriman/{id}": {
@@ -124,7 +296,12 @@
                     "404": {
                         "description": "Data tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -187,7 +364,12 @@
                     "404": {
                         "description": "Data tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -212,7 +394,12 @@
                     "404": {
                         "description": "Data tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/gudang": {
@@ -226,7 +413,12 @@
                     "200": {
                         "description": "Data gudang ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -264,7 +456,12 @@
                     "201": {
                         "description": "Gudang berhasil dibuat"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/gudang/{id}": {
@@ -288,7 +485,12 @@
                     "200": {
                         "description": "Gudang berhasil ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -336,7 +538,12 @@
                     "200": {
                         "description": "Gudang berhasil diupdate"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -358,7 +565,12 @@
                     "200": {
                         "description": "Gudang berhasil dihapus"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/institusi": {
@@ -410,7 +622,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -514,7 +731,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/institusi/{id}": {
@@ -590,7 +812,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -716,7 +943,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -755,7 +987,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/jenissenjata": {
@@ -769,7 +1006,12 @@
                     "200": {
                         "description": "Berhasil menampilkan semua jenis senjata"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -807,7 +1049,12 @@
                     "422": {
                         "description": "Validasi gagal"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/jenissenjata/{id}": {
@@ -834,7 +1081,12 @@
                     "404": {
                         "description": "Jenis senjata tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -882,7 +1134,12 @@
                     "404": {
                         "description": "Jenis senjata tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -907,7 +1164,12 @@
                     "404": {
                         "description": "Jenis senjata tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/karyawan-gudang": {
@@ -921,7 +1183,12 @@
                     "200": {
                         "description": "Berhasil mengambil data"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -968,7 +1235,12 @@
                     "201": {
                         "description": "Berhasil disimpan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/karyawan-gudang/{id}": {
@@ -995,7 +1267,12 @@
                     "404": {
                         "description": "Tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -1045,7 +1322,12 @@
                     "404": {
                         "description": "Tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -1070,7 +1352,12 @@
                     "404": {
                         "description": "Tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/lisensi": {
@@ -1084,7 +1371,12 @@
                     "200": {
                         "description": "Sukses mengambil data lisensi"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1137,7 +1429,12 @@
                     "201": {
                         "description": "Lisensi berhasil ditambahkan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/lisensi/{id}": {
@@ -1164,7 +1461,12 @@
                     "404": {
                         "description": "Lisensi tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -1220,7 +1522,12 @@
                     "200": {
                         "description": "Lisensi diperbarui"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -1242,7 +1549,12 @@
                     "204": {
                         "description": "Lisensi dihapus"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/pengiriman": {
@@ -1256,7 +1568,12 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1304,7 +1621,12 @@
                     "201": {
                         "description": "Created"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/pengiriman/{id}": {
@@ -1331,7 +1653,12 @@
                     "404": {
                         "description": "Not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -1383,7 +1710,12 @@
                     "200": {
                         "description": "Updated"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -1405,7 +1737,12 @@
                     "204": {
                         "description": "Deleted"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/perawatan": {
@@ -1419,7 +1756,12 @@
                     "200": {
                         "description": "Sukses mengambil data"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1462,7 +1804,12 @@
                     "201": {
                         "description": "Berhasil ditambahkan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/perawatan/{id}": {
@@ -1489,7 +1836,12 @@
                     "404": {
                         "description": "Data tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -1539,7 +1891,12 @@
                     "404": {
                         "description": "Data tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -1564,7 +1921,12 @@
                     "404": {
                         "description": "Tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/senjata": {
@@ -1578,7 +1940,12 @@
                     "200": {
                         "description": "Data senjata ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1631,7 +1998,12 @@
                     "500": {
                         "description": "Terjadi kesalahan saat menyimpan data"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/senjata/{id}": {
@@ -1658,7 +2030,12 @@
                     "404": {
                         "description": "Senjata tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -1721,7 +2098,12 @@
                     "404": {
                         "description": "Senjata tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -1746,7 +2128,12 @@
                     "404": {
                         "description": "Senjata tidak ditemukan"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         }
     },
@@ -1784,9 +2171,20 @@
                 },
                 "type": "object"
             }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
         }
     },
     "tags": [
+        {
+            "name": "Auth",
+            "description": "API Endpoints untuk autentikasi"
+        },
         {
             "name": "JenisSenjata",
             "description": "JenisSenjata"
@@ -1823,5 +2221,10 @@
             "name": "Senjata",
             "description": "Senjata"
         }
-    ]
+    ],
+    "security": {
+        "1": {
+            "sanctum": []
+        }
+    }
 }

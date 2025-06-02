@@ -12,6 +12,7 @@ class LisensiSenjataController extends Controller
     /**
      * @OA\Get(
      *     path="/lisensi",
+     *     security={{"sanctum":{}}},
      *     summary="Ambil semua lisensi senjata",
      *     tags={"LisensiSenjata"},
      *     @OA\Response(
@@ -39,6 +40,7 @@ class LisensiSenjataController extends Controller
     /**
      * @OA\Post(
      *     path="/lisensi",
+     *     security={{"sanctum":{}}},
      *     summary="Tambah lisensi baru",
      *     tags={"LisensiSenjata"},
      *     @OA\RequestBody(
@@ -93,6 +95,7 @@ class LisensiSenjataController extends Controller
     /**
      * @OA\Get(
      *     path="/lisensi/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Ambil detail lisensi",
      *     tags={"LisensiSenjata"},
      *     @OA\Parameter(
@@ -124,6 +127,7 @@ class LisensiSenjataController extends Controller
     /**
      * @OA\Put(
      *     path="/lisensi/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Perbarui lisensi",
      *     tags={"LisensiSenjata"},
      *     @OA\Parameter(
@@ -182,6 +186,7 @@ class LisensiSenjataController extends Controller
     /**
      * @OA\Delete(
      *     path="/lisensi/{id}",
+     *     security={{"sanctum":{}}},
      *     summary="Hapus lisensi",
      *     tags={"LisensiSenjata"},
      *     @OA\Parameter(
