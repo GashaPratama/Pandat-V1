@@ -21,6 +21,7 @@ class JenisSenjataController extends Controller
      *     path="/jenissenjata",
      *     summary="Menampilkan seluruh data jenis senjata",
      *     tags={"JenisSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Berhasil menampilkan semua jenis senjata"
@@ -43,6 +44,7 @@ class JenisSenjataController extends Controller
      *     path="/jenissenjata",
      *     summary="Membuat jenis senjata baru",
      *     tags={"JenisSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(

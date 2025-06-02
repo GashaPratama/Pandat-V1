@@ -16,6 +16,7 @@ class GudangController extends Controller
      *     path="/gudang",
      *     summary="Tampilkan semua gudang",
      *     tags={"Gudang"},
+     *     security={{"sanctum":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Data gudang ditemukan"
@@ -37,6 +38,7 @@ class GudangController extends Controller
      *     path="/gudang",
      *     summary="Tambah gudang baru",
      *     tags={"Gudang"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(

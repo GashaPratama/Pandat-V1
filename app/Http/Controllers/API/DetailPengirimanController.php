@@ -27,6 +27,7 @@ class DetailPengirimanController extends Controller
      *     path="/detail-pengiriman",
      *     tags={"DetailPengiriman"},
      *     summary="Menampilkan semua detail pengiriman",
+     *     security={{"sanctum":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Data ditemukan",

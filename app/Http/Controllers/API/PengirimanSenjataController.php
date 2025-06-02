@@ -13,6 +13,7 @@ class PengirimanSenjataController extends Controller
      *     path="/pengiriman",
      *     summary="Ambil semua pengiriman senjata",
      *     tags={"PengirimanSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Response(response=200, description="OK")
      * )
      */
@@ -26,6 +27,7 @@ class PengirimanSenjataController extends Controller
      *     path="/pengiriman",
      *     summary="Tambah pengiriman baru",
      *     tags={"PengirimanSenjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(

@@ -14,6 +14,7 @@ class KaryawanGudangController extends Controller
      *     path="/karyawan-gudang",
      *     tags={"KaryawanGudang"},
      *     summary="Ambil semua data karyawan gudang",
+     *     security={{"sanctum":{}}},
      *     @OA\Response(response=200, description="Berhasil mengambil data")
      * )
      */
@@ -27,6 +28,7 @@ class KaryawanGudangController extends Controller
      *     path="/karyawan-gudang",
      *     tags={"KaryawanGudang"},
      *     summary="Simpan data karyawan baru",
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(

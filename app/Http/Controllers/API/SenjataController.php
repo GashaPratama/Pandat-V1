@@ -17,6 +17,7 @@ class SenjataController extends Controller
      *     path="/senjata",
      *     summary="Menampilkan semua senjata",
      *     tags={"Senjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Data senjata ditemukan"
@@ -38,6 +39,7 @@ class SenjataController extends Controller
      *     path="/senjata",
      *     summary="Menyimpan senjata baru",
      *     tags={"Senjata"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
